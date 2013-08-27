@@ -1,0 +1,296 @@
+package Aula_13_08_13_Heranca;
+
+import java.util.Scanner;
+
+public class Escola {
+
+	public static void cadastroProfessor(Professor newProfessor[], int i) {
+
+		Scanner imputDados = new Scanner(System.in);
+		Scanner imputNumeros = new Scanner(System.in);
+
+		newProfessor[i] = new Professor("alan", "00000", 12, 'm', 1,
+				" Professor", 0, "matematica", "alan taz mania");
+		System.out.println("Professor: " + (i + 1));
+		System.out.println("informe a matricula do professor");
+		newProfessor[i].setMatricula(imputNumeros.nextInt());
+
+		System.out.println("informe o nome do professor");
+		newProfessor[i].setNome(imputDados.next());
+
+		System.out.println("informe o cpf do professor");
+		newProfessor[i].setCpf(imputDados.next());
+
+		System.out.println("informe  a idade do professor");
+		newProfessor[i].setIdade(imputNumeros.nextInt());
+
+		System.out.println("informe o sexo do professor ");
+		newProfessor[i].setSexo(imputDados.next().charAt(0));
+
+		System.out.println("informe o salario");
+		newProfessor[i].setSalario(imputNumeros.nextDouble());
+
+		System.out.println("informe a turma ");
+		newProfessor[i].setTurma(imputDados.next());
+
+		System.out.println("inforem o email");
+		newProfessor[i].setEmail(imputDados.next());
+
+	}
+
+	public static void cadastroAluno(Aluno newAluno[], int i) {
+		Scanner imputDados = new Scanner(System.in);
+		Scanner imputNumeros = new Scanner(System.in);
+
+		newAluno[i] = new Aluno("taz", "000000", 12, 'm', 00000, 00);
+		System.out.println("Aluno: " + (i + 1));
+		System.out.println("informe a matricula do aluno");
+		newAluno[i].setMatricula(imputNumeros.nextInt());
+
+		System.out.println("informe o nome do aluno");
+		newAluno[i].setNome(imputDados.next());
+
+		System.out.println("informe o cpf do aluno");
+		newAluno[i].setCpf(imputNumeros.next());
+
+		System.out.println("informe a idade do aluno");
+		newAluno[i].setIdade(imputNumeros.nextInt());
+
+		System.out.println("informe o sexo [M]asculino   [F]eminino");
+		newAluno[i].setSexo(imputDados.next().charAt(0));
+
+		System.out.println("informe a media do aluno");
+		newAluno[i].setMedia(imputNumeros.nextDouble());
+
+	}
+
+	public static void menuPrincipal() {
+
+		System.out.println("1-cadastrar");
+		System.out.println("2-consultar ");
+		System.out.println("3- excluir");
+		System.out.println("4-alterar");
+		System.out.println("5-sair");
+
+	}
+
+	public static void menuSecundario() {
+		System.out.println("1- Professor");
+		System.out.println("2- Aluno");
+		System.out.println("3- Voltar o menu anterior");
+	}
+
+	public static void main(String[] args) {
+		Scanner imputDados = new Scanner(System.in);
+		Scanner imputNumeros = new Scanner(System.in);
+
+		Professor newProfessor[] = new Professor[10];
+		Aluno newAluno[] = new Aluno[10];
+		int matriculaTest;
+		int posicao = 0;
+		int opcao;
+		int op;
+
+		int posicaoAluno = 0;
+		int posicaoProfessor = 0;
+
+		do {
+			menuPrincipal();
+			System.out.println("informe a opcao");
+			opcao = imputNumeros.nextInt();
+			switch (opcao) {
+			case 1:
+				// cadastro
+				do {
+
+					menuSecundario();
+					System.out.println("informe a opcao");
+					op = imputNumeros.nextInt();
+
+					switch (op) {
+					case 1:
+
+						cadastroProfessor(newProfessor, posicaoProfessor);
+						posicaoProfessor++;
+						break;
+					case 2:
+
+						cadastroAluno(newAluno, posicaoAluno);
+						posicaoAluno++;
+						break;
+					case 3:
+						System.out.println("menu principal");
+						break;
+
+					default:
+						System.out.println("opcao invalida ");
+						System.out.println("por favor informe outra opcao");
+						break;
+					}
+				} while (op != 3);
+				break;
+			case 2:
+				// consulta
+				do {
+					menuSecundario();
+					System.out.println("informe a opcao");
+					op = imputNumeros.nextInt();
+
+					switch (op) {
+					case 1:
+						System.out
+								.println("Informe a matricula que deseja consultar");
+						matriculaTest = imputNumeros.nextInt();
+						for (int i = 0; i < posicaoProfessor; i++) {
+							newProfessor[i].consultarProfessor(matriculaTest);
+
+						}
+						break;
+
+					case 2:
+						System.out.println("informe a matricula do aluno");
+						matriculaTest = imputNumeros.nextInt();
+						for (int i = 0; i < posicaoAluno; i++) {
+							newAluno[i].consultarAluno(matriculaTest);
+						}
+						break;
+
+					case 3:
+						System.out.println("menu principal");
+						break;
+
+					default:
+						System.out.println("opcao invalida");
+						break;
+
+					}
+				} while (op != 3);
+
+				break;
+			case 3:
+				// excluir
+				do {
+
+					menuSecundario();
+					System.out.println("inforem a opcao");
+					op = imputNumeros.nextInt();
+
+					switch (op) {
+
+					case 1:
+						System.out.println("informe a matricula");
+						matriculaTest = imputNumeros.nextInt();
+
+						for (int j = 0; j < posicaoProfessor; j++) {
+
+							//System.out.println(newProfessor[j].consultarProfessor(matriculaTest));
+							
+							if (newProfessor[j].consultarProfessor(matriculaTest)) {
+								posicao = j;
+							}
+
+						}
+
+						for (int i = posicao; i < posicaoProfessor - 1; i++) {
+							newProfessor[i] = newProfessor[i + 1];
+						}
+						posicaoProfessor--;
+
+						break;
+					case 2:
+						System.out.println("informe a matricula");
+						matriculaTest = imputNumeros.nextInt();
+						for (int j = 0; j < posicaoAluno; j++) {
+
+							//System.out.println(newAluno[j].consultarAluno(matriculaTest));
+							if (newAluno[j].consultarAluno(matriculaTest)) {
+								posicao = j;
+							}
+
+						}
+						for (int i = posicao; i < posicaoAluno - 1; i++) {
+							newAluno[i] = newAluno[i + 1];
+						}
+						posicaoAluno--;
+
+						break;
+					case 3:
+						System.out.println("menu principal");
+						break;
+					default:
+						System.out.println("opcao invalida ");
+						System.out.println("por favor informe outra opcao");
+
+						break;
+					}
+				} while (op != 3);
+				break;
+			case 4:
+				// alterar
+				menuSecundario();
+				System.out.println("informe a opcao");
+				op = imputNumeros.nextInt();
+				do {
+
+					switch (op) {
+					case 1:
+						System.out.println("inforem a matricula");
+						matriculaTest = imputNumeros.nextInt();
+						for (int i = 0; i < posicaoProfessor; i++) {
+							System.out.println(newProfessor[i]
+									.consultarProfessor(matriculaTest));
+							if (newProfessor[i]
+									.consultarProfessor(matriculaTest)) {
+								posicao = i;
+							}
+
+						}
+
+						cadastroProfessor(newProfessor, posicao);
+
+						break;
+					case 2:
+						System.out.println("inforem a matricula");
+						matriculaTest = imputNumeros.nextInt();
+						for (int i = 0; i < posicaoAluno; i++) {
+							System.out.println(newAluno[i]
+									.consultarAluno(matriculaTest));
+							if (newAluno[i].consultarAluno(matriculaTest)) {
+								posicao = i;
+							}
+
+						}
+
+						cadastroAluno(newAluno, posicao);
+
+						break;
+					case 3:
+						System.out.println("menu principal");
+						break;
+					default:
+						System.out.println("opcao invalida ");
+						System.out.println("por favor informe outra opcao");
+
+						break;
+
+					}
+
+				} while (op != 3);
+
+				break;
+			case 5:
+				// fim
+				System.out.println("Programa finalizado");
+				break;
+
+			default:
+				System.out.println("opcao invalida ");
+				System.out.println("por favor informe outra opcao");
+
+				break;
+			}
+
+		} while (opcao != 5);
+
+	}
+}

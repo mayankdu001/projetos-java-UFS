@@ -1,0 +1,23 @@
+package Aula_16_08_13_Figura;
+
+public abstract class Generalizadora {
+
+	private int x;
+	private int y;
+	private String cor;
+
+	Generalizadora(int pX, int pY) {
+		this.x = pX;
+		this.y = pY;
+		this.cor = "black";
+	}
+
+	public void setCor(String cor) {
+		this.cor = cor;
+	}
+
+	public void desenha() {
+		System.out.println();
+	}
+
+}

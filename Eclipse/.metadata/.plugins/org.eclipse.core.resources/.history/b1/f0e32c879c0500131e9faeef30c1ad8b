@@ -1,0 +1,55 @@
+package Aula_13_08_13_Heranca;
+
+public class Aluno extends Pessoa {
+	private int matricula;
+	private double media;
+
+	public Aluno(String nome, String cpf, int idade, char sexo, int matricula,
+			double media) {
+		super(nome, cpf, idade, sexo);
+
+		this.matricula = matricula;
+		this.media = media;
+	}
+
+	public Aluno() {
+		this.matricula = 0;
+		this.media = 0;
+	}
+
+	public void setMatricula(int matricula) {
+		this.matricula = matricula;
+	}
+
+	public int getMatricula() {
+		return matricula;
+	}
+
+	public void setMedia(double media) {
+		this.media = media;
+	}
+
+	public double getMedia() {
+		return media;
+	}
+
+	public void imprimirDados() {
+		System.out.println("Matricula: " + matricula);
+		System.out.println("Nome; " + getNome());
+		System.out.println("CPF: " + getCpf());
+		System.out.println("Sexo: " + getSexo());
+		System.out.println("Media: " + media);
+
+	}
+
+	public boolean consultarAluno(int matriculaTest) {
+
+		if (matriculaTest == matricula) {
+			imprimirDados();
+			return true;
+		}
+		return false;
+
+	}
+
+}

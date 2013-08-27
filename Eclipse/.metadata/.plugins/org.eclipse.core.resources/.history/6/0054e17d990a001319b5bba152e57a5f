@@ -1,0 +1,9 @@
+public class Fibonaci {
+	int quantidade;
+
+	public Fibonaci(int n) {
+		this.quantidade = n;
+
+	}
+
+}

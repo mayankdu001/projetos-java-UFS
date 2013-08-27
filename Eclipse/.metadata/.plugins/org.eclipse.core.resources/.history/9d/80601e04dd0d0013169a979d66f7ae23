@@ -1,0 +1,37 @@
+package Supermercado;
+
+public class Fornecedor extends Pessoa {
+	private int cnpj;
+	private String tipoProduto;
+
+	public Fornecedor(int matricula, String nome, int telefone,
+			String endereco, int cnpj, String tipoProduto) {
+		super(matricula, nome, telefone, endereco);
+		this.cnpj = cnpj;
+		this.tipoProduto = tipoProduto;
+	}
+
+	public Fornecedor() {
+		super();
+		this.cnpj = 0;
+		this.tipoProduto = null;
+
+	}
+
+	public void setCnpj(int cnpj) {
+		this.cnpj = cnpj;
+	}
+
+	public int getCnpj() {
+		return cnpj;
+	}
+
+	public void setTipoProduto(String tipoProduto) {
+		this.tipoProduto = tipoProduto;
+	}
+
+	public String getTipoProduto() {
+		return tipoProduto;
+	}
+
+}
