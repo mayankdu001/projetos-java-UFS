@@ -2,7 +2,8 @@ package Supermercado;
 
 import java.util.Scanner;
 
-public class SuperTuner {
+public class Supermercado {
+	// metodos de funcionario
 
 	public static Funcionario cadastroFuncionario(int posicaoFunc) {
 		// cadastrando funcionario
@@ -53,13 +54,12 @@ public class SuperTuner {
 		Scanner imputDados = new Scanner(System.in);
 		Scanner imputNumeros = new Scanner(System.in);
 
-		int matriculaTest;
+		// System.out.println("informe a matricula para a pesnquisa");
+		// int matriculaTest = imputNumeros.nextInt();
 
-		System.out.println("informe a matricula para a pesnquisa");
-		matriculaTest = imputNumeros.nextInt();
-		if (vetFuncionario[posicao].getMatricula() == matriculaTest) {
+		if (consultarFuncionario(vetFuncionario, posicao)) {
 
-			vetFuncionario[posicao].exibirDados();
+			// vetFuncionario[posicao].exibirDados();
 			System.out.println();
 			System.out.println("alterando dados");
 
@@ -68,34 +68,36 @@ public class SuperTuner {
 
 	}
 
-	public static void consultarFuncionario(Funcionario vetFuncionario[],
+	public static boolean consultarFuncionario(Funcionario vetFuncionario[],
 			int posicao) {
 		// metodo de consulta de funcionario
 
 		Scanner imputNumero = new Scanner(System.in);
 
-		int matriculaTest;
-
 		System.out
 				.println("informe a matricula do funcionario q deseja consultar ");
-		matriculaTest = imputNumero.nextInt();
-
-		if (vetFuncionario[posicao].getMatricula() == matriculaTest) {
-			vetFuncionario[posicao].exibirDados();
+		int matriculaTest = imputNumero.nextInt();
+		for (int i = 0; i < posicao; i++) {
+			if (vetFuncionario[i].getMatricula() == matriculaTest) {
+				vetFuncionario[i].exibirDados();
+				return true;
+			}
 		}
+
+		return false;
 	}
 
 	public static void excluirFuncionario(Funcionario vetFuncionario[],
 			int posicao) {
 		Scanner imputNumero = new Scanner(System.in);
-		int matriculaTest;
+		// int matriculaTest;
 		int op;
-		System.out
-				.println("informe a matricula do funcionario q deseja excluir");
-		matriculaTest = imputNumero.nextInt();
-		if (vetFuncionario[posicao].getMatricula() == matriculaTest) {
+		// System.out
+		// .println("informe a matricula do funcionario q deseja excluir");
+		// matriculaTest = imputNumero.nextInt();
+		if (consultarFuncionario(vetFuncionario, posicao)) {
 
-			vetFuncionario[posicao].exibirDados();
+			// vetFuncionario[posicao].exibirDados();
 
 			System.out.println("deseja exluir o funiocnario");
 			System.out.println("1 - OK");
@@ -107,6 +109,7 @@ public class SuperTuner {
 					vetFuncionario[i] = vetFuncionario[i + 1];
 
 				}
+				System.out.println("funcionario Exluido com Sucesso");
 
 			} else {
 				System.out.println("funcionario não foi excluido");
@@ -115,6 +118,7 @@ public class SuperTuner {
 		}
 	}
 
+	// metodos de cliente
 	public static Cliente cadastroCliente(int posicaoClie) {
 
 		Scanner imputDados = new Scanner(System.in);
@@ -146,19 +150,19 @@ public class SuperTuner {
 		double limite = imputNumeros.nextDouble();
 
 		return new Cliente(matricula, nome, idade, sexo, cpf, telefone,
-				endereco, rendimento, limite);
+				endereco, rendimento, limite, 0);
 
 	}
 
 	public static void alterarCliente(Cliente vetCliente[], int posicao) {
 		Scanner imputNumero = new Scanner(System.in);
 
-		System.out.println("informe a matricula do cliente que desja alterar");
-		int matriculaTest = imputNumero.nextInt();
+		// System.out.println("informe a matricula do cliente que desja alterar");
+		// int matriculaTest = imputNumero.nextInt();
 
-		if (vetCliente[posicao].getMatricula() == matriculaTest) {
+		if (consultarCliente(vetCliente, posicao)) {
 
-			vetCliente[posicao].exibirDados();
+			// vetCliente[posicao].exibirDados();
 
 			System.out.println();
 			System.out.println("Alterando dados");
@@ -168,30 +172,32 @@ public class SuperTuner {
 
 	}
 
-	public static void consultarCliente(Cliente vetCliente[], int posicao) {
+	public static boolean consultarCliente(Cliente vetCliente[], int posicao) {
 		Scanner imputNumero = new Scanner(System.in);
 
 		System.out
 				.println("informe a matricula do Cliente que deseja consultar");
 		int matriculaTest = imputNumero.nextInt();
+		for (int i = 0; i < posicao; i++) {
 
-		if (vetCliente[posicao].getMatricula() == matriculaTest) {
+			if (vetCliente[posicao].getMatricula() == matriculaTest) {
 
-			vetCliente[posicao].exibirDados();
-
+				vetCliente[posicao].exibirDados();
+				return true;
+			}
 		}
-
+		return false;
 	}
 
 	public static void excluirCliente(Cliente vetCliente[], int posicao) {
 
 		Scanner imputNumero = new Scanner(System.in);
-		System.out
-				.println("informe a matricula do Cliente que deseja consultar");
-		int matriculaTest = imputNumero.nextInt();
-		if (vetCliente[posicao].getMatricula() == matriculaTest) {
+		// System.out
+		// .println("informe a matricula do Cliente que deseja consultar");
+		// int matriculaTest = imputNumero.nextInt();
+		if (consultarCliente(vetCliente, posicao)) {
 
-			vetCliente[posicao].exibirDados();
+			// vetCliente[posicao].exibirDados();
 
 			System.out.println("Deseja Excluir Funcionario");
 			System.out.println("1- OK");
@@ -210,19 +216,22 @@ public class SuperTuner {
 	}
 
 	public static void compraCliente(Cliente vetCliente[], int posicao) {
+
 		Scanner imputNumero = new Scanner(System.in);
-		System.out
-				.println("infrme a matricula do cliente q esta realizado a compra");
 
-		int matriculaTest = imputNumero.nextInt();
+		// System.out
+		// .println("infrme a matricula do cliente q esta realizado a compra");
 
-		if (vetCliente[posicao].getMatricula() == matriculaTest) {
+		// int matriculaTest = imputNumero.nextInt();
+
+		if (consultarCliente(vetCliente, posicao)) {
+
 			System.out.println("informe o valor da compra");
 			double valorTest = imputNumero.nextDouble();
 
 			if (vetCliente[posicao].testCompra(valorTest)) {
 
-				vetCliente[posicao].setValorCompra(valorTest);
+				vetCliente[posicao].saldo(valorTest);
 
 			} else {
 				System.out.println("valor acima do limite");
@@ -230,9 +239,19 @@ public class SuperTuner {
 		}
 	}
 
-	// public static void PagamentoCliente(Cliente ){
+	public static void PagamentoCliente(Cliente vetCliente[], int posicao) {
+		Scanner imputNumero = new Scanner(System.in);
+		System.out.println("informe o valor do pagamento");
+		double valorPagamento = imputNumero.nextDouble();
+		if (consultarCliente(vetCliente, posicao)) {
 
-	// }
+			vetCliente[posicao].pagamento(valorPagamento);
+
+		}
+
+	}
+
+	// metodos de fonecedor
 
 	public static Fornecedor cadastroFornecedor(int posicaoForn) {
 		Scanner imputDados = new Scanner(System.in);
@@ -267,16 +286,88 @@ public class SuperTuner {
 
 	}
 
+	public static void alterarFornecedor(Fornecedor vetFornecedor[], int posicao) {
+		
+			if (consultarFornecedor(vetFornecedor, posicao)) {
+
+				vetFornecedor[posicao] = cadastroFornecedor(posicao);
+
+			}
+
+		
+	}
+
+	public static boolean consultarFornecedor(Fornecedor vetFornecedor[],
+			int posicao) {
+		Scanner imputNumero = new Scanner(System.in);
+		boolean test = false;
+		System.out
+				.println("informe a matricula do fornecedor q deseja consultar");
+
+		int matriculaTest = imputNumero.nextInt();
+
+		for (int i = 0; i < posicao; i++) {
+
+			if (vetFornecedor[i].getMatricula() == matriculaTest) {
+				vetFornecedor[i].exibirDados();
+				test = true;
+			}
+		}
+		return test;
+
+	}
+
+	public static void excluirFornecedor(Fornecedor vetFornecedor[], int posicao) {
+		Scanner imputNumero = new Scanner(System.in);
+		if (consultarFornecedor(vetFornecedor, posicao)) {
+
+			System.out.println("deseja exluir o funiocnario");
+			System.out.println("1 - OK");
+			System.out.println("2 - Cancelar");
+			int op = imputNumero.nextInt();
+			if (op == 1) {
+				for (int i = 0; i < posicao; i++) {
+
+					vetFornecedor[i] = vetFornecedor[i + 1];
+
+				}
+				System.out.println("funcionario Exluido com Sucesso");
+
+			} else {
+				System.out.println("funcionario não foi excluido");
+			}
+
+		}
+	}
+
+	public static void exibirEstoque(Estoque vetEstoque[],
+			Fornecedor vetFornecedor[], int posicao) {
+		Scanner imputNumero = new Scanner(System.in);
+
+		System.out
+				.println("informe a matricula do fornecedor q deseja consultar");
+		int matriculaTest = imputNumero.nextInt();
+
+		if (vetFornecedor[posicao].getMatricula() == matriculaTest) {
+			vetEstoque[posicao].exibirDadosEstoque(vetFornecedor[posicao]
+					.getTipoProduto());
+		}
+
+	}
+
 	public static void menuPrincipal() {
 		System.out.println("1-Funcionario");
-		System.out.println("2-Fornecedor");
-		System.out.println("3-Cliente");
+		System.out.println("2-Cliente");
+		System.out.println("3-Fornecedor");
 		System.out.println("4-Sair");
 		System.out.println("informe a opcao");
 
 	}
 
 	public static void menuFuncionario() {
+
+		System.out.println("######  Menu Funcionario  ########");
+
 		System.out.println("1 - Cadastrar");
 		System.out.println("2 - Alterar Dados");
 		System.out.println("3 - Consultar");
@@ -287,7 +378,7 @@ public class SuperTuner {
 	}
 
 	public static void menuCliente() {
-
+		System.out.println("######  Menu Cliente  ########");
 		System.out.println("1 - Cadastrar");
 		System.out.println("2 - Alterar Dados");
 		System.out.println("3 - Consultar");
@@ -299,31 +390,50 @@ public class SuperTuner {
 
 	}
 
+	public static void menuFornecedor() {
+
+		System.out.println("#### Menu Fornecedor #####");
+
+		System.out.println("1 - Cadastrar");
+		System.out.println("2 - Alterar Dados");
+		System.out.println("3 - Consultar");
+		System.out.println("4 - Excluir");
+		System.out.println("5 - Imprimir dados do estoque");
+		System.out.println("6 - Voltar ao Menu Principal");
+		System.out.println("Informe a Opcao");
+
+	}
+
 	public static void main(String[] args) {
 		Scanner imputDados = new Scanner(System.in);
 		Scanner imputNumero = new Scanner(System.in);
 
+		Estoque vetEstoque[] = new Estoque[2];
 		Fornecedor vetFornecedor[] = new Fornecedor[2];
 		Funcionario vetFuncionario[] = new Funcionario[2];
 		Cliente vetCliente[] = new Cliente[2];
+
 		// posicaoes dos vetores
 		int posicaoFun = 0;
 		int posicaoFor = 0;
 		int posicaoCli = 0;
-
+		int posicaoEst;
 		int opcaoPrincipal;
 		int opSub;
 
 		do {
 			menuPrincipal();
+
 			opcaoPrincipal = imputNumero.nextInt();
 			switch (opcaoPrincipal) {
 			// case do menu peincipal
 			case 1:
 				// case funcionario
 				do {
+
 					menuFuncionario();
 					opSub = imputNumero.nextInt();
+
 					switch (opSub) {
 					case 1:
 						vetFuncionario[posicaoFun++] = cadastroFuncionario(posicaoFun);
@@ -369,19 +479,27 @@ public class SuperTuner {
 
 						break;
 					case 2:
-
+						alterarCliente(vetCliente, posicaoCli);
 						break;
 					case 3:
+						consultarCliente(vetCliente, posicaoCli);
 						break;
 					case 4:
+						excluirCliente(vetCliente, posicaoCli);
 						break;
 					case 5:
+						compraCliente(vetCliente, posicaoCli);
 						break;
 					case 6:
+						PagamentoCliente(vetCliente, posicaoCli);
 						break;
 					case 7:
+						System.out.println("Menu Principal");
 						break;
 					default:
+						System.out.println("Opcao Invalida ");
+						System.out.println("Informe a Opcao Impressa no Menu");
+
 						break;
 
 					}
@@ -390,6 +508,38 @@ public class SuperTuner {
 
 				break;
 			case 3:
+
+				do {
+					menuFornecedor();
+					opSub = imputNumero.nextInt();
+
+					switch (opSub) {
+
+					case 1:
+						vetFornecedor[posicaoFor++] = cadastroFornecedor(posicaoFor);
+						break;
+					case 2:
+						alterarFornecedor(vetFornecedor, posicaoFor);
+						break;
+					case 3:
+						consultarFornecedor(vetFornecedor, posicaoFor);
+					case 4:
+						excluirFornecedor(vetFornecedor, posicaoFor);
+						break;
+					case 5:
+						exibirEstoque(vetEstoque, vetFornecedor, posicaoFor);
+						break;
+					case 6:
+						System.out.println("Menu Principal");
+						break;
+					default:
+						System.out.println("Opcao Invalida ");
+						System.out.println("Informe a Opcao Impressa no Menu");
+						break;
+
+					}
+
+				} while (opSub != 6);
 				break;
 			case 4:
 				System.out.println("Programa Finalizado");

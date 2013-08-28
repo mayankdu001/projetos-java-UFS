@@ -56,4 +56,11 @@ public class Fornecedor extends Pessoa {
 		return idProduto;
 	}
 
+	@Override
+	public void exibirDados() {
+		// TODO Auto-generated method stub
+		super.exibirDados();
+		System.out.println("CNPJ: "+ cnpj);
+	}
+	
 }
