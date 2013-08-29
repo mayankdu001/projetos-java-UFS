@@ -76,10 +76,15 @@ public class Supermercado {
 
 		System.out
 				.println("informe a matricula do funcionario q deseja consultar ");
+
 		int matriculaTest = imputNumero.nextInt();
+
 		for (int i = 0; i < posicao; i++) {
+
 			if (vetFuncionario[i].getMatricula() == matriculaTest) {
+
 				vetFuncionario[i].exibirDados();
+
 				return true;
 			}
 		}
@@ -276,44 +281,47 @@ public class Supermercado {
 		System.out.println("inforem o tipo do produto [1] [2] [3] [4]");
 		int tipoProduto = imputNumeros.nextInt();
 
-		int idProduto = tipoProduto;
-
 		System.out.println("inforem a quantidade de produto");
 		int quantidade = imputNumeros.nextInt();
 
 		return new Fornecedor(matricula, nome, telefone, endereco, cnpj,
-				tipoProduto, idProduto, quantidade);
+				tipoProduto, quantidade);
+
+	}
+
+	public static void cadastroEstoque(Estoque vetEstoque[],
+			Fornecedor vetFornecedor[], int posicaoEst, int posicaoFor) {
+
+		vetEstoque[posicaoEst].salvandoEstoque(vetFornecedor[posicaoFor].getTipoProduto(),vetFornecedor[posicaoFor].getQuaProduto());
 
 	}
 
 	public static void alterarFornecedor(Fornecedor vetFornecedor[], int posicao) {
-		
-			if (consultarFornecedor(vetFornecedor, posicao)) {
 
-				vetFornecedor[posicao] = cadastroFornecedor(posicao);
+		if (consultarFornecedor(vetFornecedor, posicao)) {
 
-			}
+			vetFornecedor[posicao] = cadastroFornecedor(posicao);
 
-		
+		}
+
 	}
 
 	public static boolean consultarFornecedor(Fornecedor vetFornecedor[],
 			int posicao) {
 		Scanner imputNumero = new Scanner(System.in);
-		boolean test = false;
+
 		System.out
 				.println("informe a matricula do fornecedor q deseja consultar");
-
 		int matriculaTest = imputNumero.nextInt();
 
 		for (int i = 0; i < posicao; i++) {
 
 			if (vetFornecedor[i].getMatricula() == matriculaTest) {
 				vetFornecedor[i].exibirDados();
-				test = true;
+				return true;
 			}
 		}
-		return test;
+		return false;
 
 	}
 
@@ -341,18 +349,15 @@ public class Supermercado {
 	}
 
 	public static void exibirEstoque(Estoque vetEstoque[],
-			Fornecedor vetFornecedor[], int posicao) {
+			Fornecedor vetFornecedor[], int posicaoFor, int posicaoEst) {
 		Scanner imputNumero = new Scanner(System.in);
 
-		System.out
-				.println("informe a matricula do fornecedor q deseja consultar");
-		int matriculaTest = imputNumero.nextInt();
+		if (consultarFornecedor(vetFornecedor, posicaoFor)) {
 
-		if (vetFornecedor[posicao].getMatricula() == matriculaTest) {
-			vetEstoque[posicao].exibirDadosEstoque(vetFornecedor[posicao]
+			vetEstoque[posicaoEst].exibirDadosEstoque(vetFornecedor[posicaoFor]
 					.getTipoProduto());
-		}
 
+		}
 	}
 
 	public static void menuPrincipal() {
@@ -417,7 +422,7 @@ public class Supermercado {
 		int posicaoFun = 0;
 		int posicaoFor = 0;
 		int posicaoCli = 0;
-		int posicaoEst;
+		int posicaoEst = 0;
 		int opcaoPrincipal;
 		int opSub;
 
@@ -517,17 +522,22 @@ public class Supermercado {
 
 					case 1:
 						vetFornecedor[posicaoFor++] = cadastroFornecedor(posicaoFor);
+						cadastroEstoque(vetEstoque, vetFornecedor, posicaoEst,
+								posicaoFor - 1);
+						posicaoEst++;
 						break;
 					case 2:
 						alterarFornecedor(vetFornecedor, posicaoFor);
 						break;
 					case 3:
 						consultarFornecedor(vetFornecedor, posicaoFor);
+						break;
 					case 4:
 						excluirFornecedor(vetFornecedor, posicaoFor);
 						break;
 					case 5:
-						exibirEstoque(vetEstoque, vetFornecedor, posicaoFor);
+						exibirEstoque(vetEstoque, vetFornecedor, posicaoFor,
+								posicaoEst);
 						break;
 					case 6:
 						System.out.println("Menu Principal");

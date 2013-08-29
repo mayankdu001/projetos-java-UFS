@@ -99,8 +99,8 @@ public class Pessoa {
 	}
 
 	public void exibirDados() {
-		System.out.println("Nome: " + matricula);
-		System.out.println("idade: " + nome);
+		System.out.println("Matricula: " + matricula);
+		System.out.println("nome: " + nome);
 		System.out.println("Telefone: " + telefone);
 		System.out.println("Endereco: " + endereco);
 	}

@@ -93,22 +93,25 @@ public class Estoque {
 	}
 
 	public void exibirDadosEstoque(int tipoProduto) {
-		if (tipoProduto == 1) {
+
+		switch (tipoProduto) {
+		case 1:
 			System.out.println("Produtos Liquidos Restantes no estoque: ");
 			System.out.println("Quantidade: " + liquido);
 
-		}
-		if (tipoProduto == 2) {
+			break;
+		case 2:
 			System.out.println("Produtos Solidos Restantes no estoque: ");
 			System.out.println("Quantidade: " + solidos);
-		}
-		if (tipoProduto == 3) {
+			break;
+		case 3:
 			System.out.println("Produtos Pereciveis Restantes no estoque: ");
 			System.out.println("Quantidade: " + pereciveis);
-		}
-		if (tipoProduto == 3) {
+			break;
+		case 4:
 			System.out.println("Produtos Liquidos Restantes no estoque: ");
 			System.out.println("Quantidade: " + naoPereciveis);
+			break;
 		}
 	}
 }
