@@ -1,0 +1,7 @@
+package Geometria;
+
+public class Area {
+	public static double AreaCalc(double base) {
+
+	}
+}
