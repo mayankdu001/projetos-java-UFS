@@ -1,0 +1,20 @@
+package Janela;
+
+import javax.swing.JFrame;
+import java.awt.Color;
+
+public class DrownPainelTest {
+
+	public static void main(String[] args) {
+		
+		DrowPanel painel = new DrowPanel();
+		
+		painel.setBackground(Color.YELLOW);
+		JFrame aplicacao = new JFrame("exemplo de desenho");
+		
+		
+		
+
+	}
+
+}
