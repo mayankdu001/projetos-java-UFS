@@ -110,9 +110,16 @@ public class JogoVelha extends JFrame {
 
 	}
 
+	/* metdodo pra colocar um plano de fundo na bagaça
+	 * 
+	 * public void ajustaFundo(String arquivo) { JLabel fundo = new JLabel(new
+	 * ImageIcon(arquivo)); fundo.setLayout(new FlowLayout());
+	 * setContentPane(fundo); }
+	 * ajustaFundo("C:/Users/ALAN PASSOS/Pictures/hulk.JPG");
+	 */
 	public JogoVelha() {
 
-		super("JOGO DA VELHA");
+		super("PROGRAMACAO ORIANTADA A GAMBIARRA");
 
 		adicionar = new JButton("Adicionar");
 		nome2 = new JButton();
@@ -276,7 +283,8 @@ public class JogoVelha extends JFrame {
 
 		// painel1
 		// painel1.setLayout(new BoxLayout(painel1, BoxLayout.X_AXIS));
-		painel1.setLayout(new GridLayout(10, 20));
+		painel1.setLayout(new GridLayout(8, 20));
+
 		painel1.add(jogador01);
 		painel1.add(campoJogador1);
 		// painel1.add(simbolo);
@@ -295,7 +303,7 @@ public class JogoVelha extends JFrame {
 		painel1.add(adicionar);
 
 		getContentPane().add(painel1, BorderLayout.WEST);
-		// getContentPane().add(panel3, BorderLayout.NORTH);
+		 getContentPane().add(panel3, BorderLayout.NORTH);
 		getContentPane().add(panel, BorderLayout.CENTER);
 		getContentPane().add(panel2, BorderLayout.EAST);
 		getContentPane().add(panel4, BorderLayout.SOUTH);
@@ -574,7 +582,11 @@ public class JogoVelha extends JFrame {
 		if (vencedor.equals("jog1")) {
 			JOptionPane.showMessageDialog(JogoVelha.this, "Vencedor: "
 					+ jogadora);
-			JOptionPane.showMessageDialog(null,getContentPane().add(new JLabel(new ImageIcon("C:/Users/ALAN PASSOS/Pictures/dia.GIF"))));
+			JOptionPane.showMessageDialog(
+					null,
+					getContentPane().add(
+							new JLabel(new ImageIcon(
+									"C:/Users/ALAN PASSOS/Pictures/dia.GIF"))));
 			tipojo1.setText(jogadora);
 			vit1++;
 			informacoes1.setText("Vitórias = " + vit1);
@@ -583,7 +595,13 @@ public class JogoVelha extends JFrame {
 		if (vencedor.equals("jog2")) {
 			JOptionPane.showMessageDialog(JogoVelha.this, "Vencedor: "
 					+ jogadorb);
-			JOptionPane.showMessageDialog(null,add(getContentPane().add(new JLabel(new ImageIcon("C:/Users/ALAN PASSOS/Pictures/dia.GIF")))));
+			JOptionPane
+					.showMessageDialog(
+							null,
+							add(getContentPane()
+									.add(new JLabel(
+											new ImageIcon(
+													"C:/Users/ALAN PASSOS/Pictures/dia.GIF")))));
 			tipojo2.setText(jogadorb);
 
 			vit2++;
@@ -645,10 +663,7 @@ public class JogoVelha extends JFrame {
 
 		JogoVelha c = new JogoVelha();
 		c.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//JogoVelha cP = new JogoVelha("C:/Users/ALAN PASSOS/Pictures");	
-		ImageIcon pnlImagem = new ImageIcon("C:/Users/ALAN PASSOS/Pictures");  
-		//c.add(pnlImagem);  
-		
+
 		c.setSize(700, 300);
 		c.setLocationRelativeTo(null);
 		c.setVisible(true);
