@@ -75,4 +75,3 @@ public class AreaDeTriangulos {
         } while (opcao != 0);
 
     }
-}

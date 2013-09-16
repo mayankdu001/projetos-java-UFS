@@ -20,7 +20,7 @@ public class Busula {
 		 * butaoLeste = new JButton("Leste"); JButton butaoOeste = new
 		 * JButton("Oeste");
 		 */
-		frame.setSize(300, 300);
+		frame.setSize(1366, 768);
 
 		/*
 		 * c.add(butaoCentro, BorderLayout.CENTER); c.add(butaoNorte,

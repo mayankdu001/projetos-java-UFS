@@ -1,0 +1,33 @@
+package Janela;
+
+import javax.swing.*;
+
+public class Janela extends JFrame{
+	
+	public janela(){
+	super("apçicacao java");	
+	}
+
+	public static void main(String[] args) {
+		int i = 0;
+		
+		frame.setSize(300,300);
+		
+		JButton but = new JButton("clic");
+		
+		JLabel texto =  new JLabel("quantidade de clics: ");
+			
+		
+
+		JPanel panel = new JPanel();
+
+		frame.add(panel);
+		panel.add(but);
+
+		panel.add(texto);
+
+		frame.setVisible(true);
+
+	}
+
+}

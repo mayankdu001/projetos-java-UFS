@@ -1,31 +1,35 @@
 package Janela;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-public class Janela {
+public class Janela extends JFrame {
+
+	public Janela() {
+		
+		super("apçicacao java");
+		
+		JButton butao = new JButton("TOBA");
+		JPanel painel = new JPanel();
+		JTextField texto = new JTextField(25);
+		
+		add(painel);
+		
+		painel.add(butao);
+		painel.add(texto);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(500, 300);
+		setVisible(true);
+		
+
+	}
 
 	public static void main(String[] args) {
-		int i = 0;
-		JFrame frame = new JFrame("aplicacao java");
-		frame.setSize(300,300);
 		
-		JButton but = new JButton("clic");
+		new Janela();
 		
-		JLabel texto = null;
-		
-		texto = new JLabel("quantidade de clics: ");
-			
-		
-
-		JPanel panel = new JPanel();
-
-		frame.add(panel);
-		panel.add(but);
-
-		panel.add(texto);
-
-		frame.setVisible(true);
-
 	}
 
 }

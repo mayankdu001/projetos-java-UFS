@@ -1,5 +1,0 @@
-package Janela;
-import java.awt.Graphics;
-public class DrowPanel {
-
-}

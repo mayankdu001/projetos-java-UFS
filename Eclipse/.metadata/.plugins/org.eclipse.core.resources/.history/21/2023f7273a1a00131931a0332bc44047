@@ -1,0 +1,37 @@
+package Layouts;
+
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+
+public class Layouts extends JFrame {
+	int i = 0;
+
+	public void metodo() {
+
+		JPanel painel = new JPanel();
+		JButton butao = new JButton("butao");
+		do {
+			if (butao.getMouseListeners() != null) {
+				i++;
+
+				JLabel texto = new JLabel("quantidade de clic: " + i);
+
+				getContentPane().add(painel);
+				painel.add(butao);
+
+				painel.add(texto);
+			}
+		} while (butao.getMouseListeners() == null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(300, 300);
+		setVisible(true);
+
+	}
+
+	public static void main(String[] args) {
+		new Layouts().metodo();
+	}
+
+}

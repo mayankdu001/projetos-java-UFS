@@ -1,0 +1,31 @@
+package Janela;
+
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.;
+
+public class Janela extends JFrame {
+
+	public Janela() {
+		
+		super("apçicacao java");
+		
+		JButton butao = new JButton("TOBA - o cachorro de Edson");
+		JPanel painel = new JPanel();
+		add(painel);
+		painel.add(butao);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(300, 300);
+		setVisible(true);
+		
+
+	}
+
+	public static void main(String[] args) {
+		
+		new Janela();
+		
+	}
+
+}
