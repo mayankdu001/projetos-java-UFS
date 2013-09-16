@@ -3,18 +3,20 @@ package JogoDaVelha;
 import java.applet.AudioClip;
 import java.awt.event.*;
 import java.awt.*;
-import javax.swing.ImageIcon;
+
 import javax.swing.*;
 
 public class JogoVelha extends JFrame {
-
+	int quantidadePartidas = 0;
 	String jogadora;
 	String jogadorb;
 	boolean iniciar = false;
 	String simbolox;
 	String simboloO;
-	JComboBox simbolo;
+
+	// JComboBox simbolo;
 	JComboBox partidas;
+
 	JButton b1;
 	JButton b2;
 	JButton b3;
@@ -110,7 +112,8 @@ public class JogoVelha extends JFrame {
 
 	}
 
-	/* metdodo pra colocar um plano de fundo na bagaça
+	/*
+	 * metdodo pra colocar um plano de fundo na bagaça
 	 * 
 	 * public void ajustaFundo(String arquivo) { JLabel fundo = new JLabel(new
 	 * ImageIcon(arquivo)); fundo.setLayout(new FlowLayout());
@@ -151,7 +154,7 @@ public class JogoVelha extends JFrame {
 		panel5 = new JPanel();
 		panel6 = new JPanel();
 		nulo = new JPanel();
-
+		
 		titulo = new JLabel("JOGO DA VELHA");
 		tipojo1 = new JLabel();
 		partida = new JLabel();
@@ -199,9 +202,9 @@ public class JogoVelha extends JFrame {
 				if (p.getSource() == partidas) {
 
 					if (partidas.getSelectedIndex() == 1) {
-
+						quantidadePartidas = 1;
 					} else if (partidas.getSelectedIndex() == 2) {
-
+						quantidadePartidas = 2;
 					}
 
 				}
@@ -236,10 +239,11 @@ public class JogoVelha extends JFrame {
 						b7.setEnabled(true);
 						b8.setEnabled(true);
 						b9.setEnabled(true);
+
 						zerar.setEnabled(true);
 
-						tipojo1.setText(jogadora);
-						tipojo2.setText(jogadorb);
+						tipojo1.setText("    " + jogadora);
+						tipojo2.setText("    " + jogadorb);
 						campoJogador1.setText(null);
 						campoJogador2.setText(null);
 						campoJogador1.setEditable(false);
@@ -257,6 +261,16 @@ public class JogoVelha extends JFrame {
 		panel2.setLayout(new GridLayout(0, 3));
 		panel5.setLayout(new GridLayout(4, 10));
 		panel6.setLayout(new GridLayout(4, 10));
+
+		// pintar panel
+		panel.setBackground(Color.WHITE);
+		painel1.setBackground(Color.lightGray);
+		panel2.setBackground(Color.lightGray);
+		panel3.setBackground(Color.lightGray);
+		panel4.setBackground(Color.lightGray);
+		panel5.setBackground(Color.lightGray);
+		panel6.setBackground(Color.lightGray);
+		nulo.setBackground(Color.lightGray);
 
 		panel5.add(jog1);
 		panel5.add(tipojo1);
@@ -278,9 +292,9 @@ public class JogoVelha extends JFrame {
 		panel4.add(exit);
 
 		// panel4.add(empate);
-
+		
 		panel3.add(titulo);
-
+		
 		// painel1
 		// painel1.setLayout(new BoxLayout(painel1, BoxLayout.X_AXIS));
 		painel1.setLayout(new GridLayout(8, 20));
@@ -294,7 +308,7 @@ public class JogoVelha extends JFrame {
 		// /painel1.add(campo4);
 
 		partidas.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
-				"Partidas", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+				"Partidas", "1", "3", "5", "7", "9" }));
 
 		// simbolo.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
 		// "Simbolo", "X", "O" }));
@@ -303,7 +317,7 @@ public class JogoVelha extends JFrame {
 		painel1.add(adicionar);
 
 		getContentPane().add(painel1, BorderLayout.WEST);
-		 getContentPane().add(panel3, BorderLayout.NORTH);
+		getContentPane().add(panel3, BorderLayout.NORTH);
 		getContentPane().add(panel, BorderLayout.CENTER);
 		getContentPane().add(panel2, BorderLayout.EAST);
 		getContentPane().add(panel4, BorderLayout.SOUTH);
@@ -318,6 +332,7 @@ public class JogoVelha extends JFrame {
 						if (jogador1) {
 							if (b1.getText().equals("")) {
 								b1.setText("X");
+								// b1.setBackground(Color.cyan);
 								TurnoJogador();
 
 							}
@@ -325,6 +340,7 @@ public class JogoVelha extends JFrame {
 						} else {
 							if (b1.getText().equals("")) {
 								b1.setText("O");
+								// b1.setBackground(Color.pink);
 								TurnoJogador();
 
 							}
@@ -334,11 +350,13 @@ public class JogoVelha extends JFrame {
 						if (jogador1) {
 							if (b2.getText().equals("")) {
 								b2.setText("X");
+								// b2.setBackground(Color.cyan);
 								TurnoJogador();
 							}
 						} else {
 							if (b2.getText().equals("")) {
 								b2.setText("O");
+								// b2.setBackground(Color.pink);
 								TurnoJogador();
 							}
 						}
@@ -347,11 +365,13 @@ public class JogoVelha extends JFrame {
 						if (jogador1) {
 							if (b3.getText().equals("")) {
 								b3.setText("X");
+								// b3.setBackground(Color.cyan);
 								TurnoJogador();
 							}
 						} else {
 							if (b3.getText().equals("")) {
 								b3.setText("O");
+								// b3.setBackground(Color.pink);
 								TurnoJogador();
 							}
 						}
@@ -361,11 +381,13 @@ public class JogoVelha extends JFrame {
 						if (jogador1) {
 							if (b4.getText().equals("")) {
 								b4.setText("X");
+								// b4.setBackground(Color.cyan);
 								TurnoJogador();
 							}
 						} else {
 							if (b4.getText().equals("")) {
 								b4.setText("O");
+								// b4.setBackground(Color.pink);
 								TurnoJogador();
 							}
 						}
@@ -375,11 +397,13 @@ public class JogoVelha extends JFrame {
 						if (jogador1) {
 							if (b5.getText().equals("")) {
 								b5.setText("X");
+								// b5.setBackground(Color.cyan);
 								TurnoJogador();
 							}
 						} else {
 							if (b5.getText().equals("")) {
 								b5.setText("O");
+								// b5.setBackground(Color.pink);
 								TurnoJogador();
 							}
 						}
@@ -388,11 +412,13 @@ public class JogoVelha extends JFrame {
 						if (jogador1) {
 							if (b6.getText().equals("")) {
 								b6.setText("X");
+								// b6.setBackground(Color.cyan);
 								TurnoJogador();
 							}
 						} else {
 							if (b6.getText().equals("")) {
 								b6.setText("O");
+								// b6.setBackground(Color.pink);
 								TurnoJogador();
 							}
 						}
@@ -402,11 +428,13 @@ public class JogoVelha extends JFrame {
 						if (jogador1) {
 							if (b7.getText().equals("")) {
 								b7.setText("X");
+								// b7.setBackground(Color.cyan);
 								TurnoJogador();
 							}
 						} else {
 							if (b7.getText().equals("")) {
 								b7.setText("O");
+								// b7.setBackground(Color.pink);
 								TurnoJogador();
 							}
 						}
@@ -415,11 +443,13 @@ public class JogoVelha extends JFrame {
 						if (jogador1) {
 							if (b8.getText().equals("")) {
 								b8.setText("X");
+								// b8.setBackground(Color.cyan);
 								TurnoJogador();
 							}
 						} else {
 							if (b8.getText().equals("")) {
 								b8.setText("O");
+								// b8.setBackground(Color.pink);
 								TurnoJogador();
 							}
 						}
@@ -428,11 +458,13 @@ public class JogoVelha extends JFrame {
 						if (jogador1) {
 							if (b9.getText().equals("")) {
 								b9.setText("X");
+								// b9.setBackground(Color.cyan);
 								TurnoJogador();
 							}
 						} else {
 							if (b9.getText().equals("")) {
 								b9.setText("O");
+								// b9.setBackground(Color.pink);
 								TurnoJogador();
 							}
 						}
@@ -595,13 +627,11 @@ public class JogoVelha extends JFrame {
 		if (vencedor.equals("jog2")) {
 			JOptionPane.showMessageDialog(JogoVelha.this, "Vencedor: "
 					+ jogadorb);
-			JOptionPane
-					.showMessageDialog(
-							null,
-							add(getContentPane()
-									.add(new JLabel(
-											new ImageIcon(
-													"C:/Users/ALAN PASSOS/Pictures/dia.GIF")))));
+			JOptionPane.showMessageDialog(
+					null,
+					getContentPane().add(
+							new JLabel(new ImageIcon(
+									"C:/Users/ALAN PASSOS/Pictures/meuDeus.GIF"))));
 			tipojo2.setText(jogadorb);
 
 			vit2++;
