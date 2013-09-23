@@ -6,7 +6,8 @@ import java.awt.*;
 
 import javax.swing.*;
 
-public class JogoVelha extends JFrame {
+public class Prototipo extends JFrame {
+	
 	int quantidadePartidas = 0;
 	String jogadora;
 	String jogadorb;
@@ -14,8 +15,6 @@ public class JogoVelha extends JFrame {
 	String simbolox;
 	String simboloO;
 
-	// JComboBox simbolo;
-	
 	JComboBox partidas;
 	JButton b1;
 	JButton b2;
@@ -35,9 +34,15 @@ public class JogoVelha extends JFrame {
 	JTextField t1;
 	JTextField t2;
 	JTextField t3;
-	JTextField campoJogador1;
-	JTextField campoJogador2;
-
+	//JTextField campoJogador1;
+	//JTextField campoJogador2;
+	
+	JPanel painelTest1 = new JPanel();
+	JPanel painelTest2 = new JPanel();
+	JPanel painelTest3 = new JPanel();
+	JPanel painelTest4 = new JPanel();
+	JPanel painelTest5 = new JPanel();
+	JPanel painelTest6 = new JPanel();
 	JPanel panel;
 	JPanel panel2;
 	JPanel panel3;
@@ -71,6 +76,23 @@ public class JogoVelha extends JFrame {
 	Font fonte2 = new Font(null, Font.CENTER_BASELINE, 20);
 	Font fonte3 = new Font(null, Font.ROMAN_BASELINE, 38);
 
+	public void TempoParaLimpar() {
+
+		// dalay pra dar o tempo de saber onde cada jogador jogou
+		
+		System.out.println("ainda naão deu o dalay");
+		
+		try {
+			Thread.sleep(500);
+		}catch (Exception e) {
+			System.out.println("passou aki");
+			//LimpaCampos();
+		}
+		
+		System.out.println("limpou o campo");
+		LimpaCampos();
+	}
+
 	// Metodo definição turnos
 	public void TurnoJogador() {
 
@@ -88,16 +110,9 @@ public class JogoVelha extends JFrame {
 	}
 
 	public void iniciarZerarTudo() {
-		b0.setText("");
-		b1.setText("");
-		b2.setText("");
-		b3.setText("");
-		b4.setText("");
-		b5.setText("");
-		b6.setText("");
-		b7.setText("");
-		b8.setText("");
-		b9.setText("");
+
+		LimpaCampos();
+
 		b0.setEnabled(false);
 		b1.setEnabled(false);
 		b2.setEnabled(false);
@@ -108,6 +123,7 @@ public class JogoVelha extends JFrame {
 		b7.setEnabled(false);
 		b8.setEnabled(false);
 		b9.setEnabled(false);
+
 		zerar.setEnabled(false);
 
 	}
@@ -120,9 +136,9 @@ public class JogoVelha extends JFrame {
 	 * setContentPane(fundo); }
 	 * ajustaFundo("C:/Users/ALAN PASSOS/Pictures/hulk.JPG");
 	 */
-	public JogoVelha() {
+	public Prototipo() {
 
-		super("PROGRAMACAO ORIANTADA A GAMBIARRA");
+		super("APLICAÇÃO jAVA");
 
 		adicionar = new JButton("Adicionar");
 		nome2 = new JButton();
@@ -199,39 +215,63 @@ public class JogoVelha extends JFrame {
 
 		MouseAdapter mousePartidas = new MouseAdapter() {
 			public void mouseClicked(MouseEvent p) {
-				if (p.getSource() == partidas) {
+				int quantidade = partidas.getSelectedIndex();
 
-					if (partidas.getSelectedIndex() == 1) {
+				if (p.getSource() == adicionar) {
+
+					switch (quantidade) {
+					case 1:
 						quantidadePartidas = 1;
-					} else if (partidas.getSelectedIndex() == 2) {
-						quantidadePartidas = 2;
+						System.out.println("partida 1");
+						break;
+
+					case 2:
+						quantidadePartidas = 3;
+						System.out.println("partida 2");
+						break;
+					case 3:
+						quantidadePartidas = 5;
+						break;
+					case 4:
+						quantidadePartidas = 7;
+						break;
+
+					case 5:
+						quantidadePartidas = 9;
+						break;
+
 					}
 
 				}
 
 			}
 		};
-
+		adicionar.addMouseListener(mousePartidas);
 		MouseAdapter newMouse = new MouseAdapter() {
 			public void mouseClicked(MouseEvent p) {
 
 				if (p.getSource() == adicionar) {
 
-					jogadora = campoJogador1.getText();
-					jogadorb = campoJogador2.getText();
+					//jogadora = campoJogador1.getText();
+					//jogadorb = campoJogador2.getText();
 					int tamanho1 = jogadora.length();
 					int tamanho2 = jogadorb.length();
-					
-					
+
 					if (tamanho1 == 0 || tamanho2 == 0) {
 						JOptionPane.showMessageDialog(null,
 								"Todos Os Campos Devem Ser Peenchidos");
 						// JOptionPane.showMessageDialog(null, );
 					} else {
 
+						// variavel q controla quando o jogo é iniciado saber s
+						// cadastrou alguem
+
 						iniciar = true;
-						
+
 						adicionar.setEnabled(false);
+
+						partidas.setEditable(false);
+
 						b0.setEnabled(true);
 						b1.setEnabled(true);
 						b2.setEnabled(true);
@@ -266,14 +306,14 @@ public class JogoVelha extends JFrame {
 		panel6.setLayout(new GridLayout(4, 10));
 
 		// pintar panel
-		panel.setBackground(Color.WHITE);
-		painel1.setBackground(Color.lightGray);
-		panel2.setBackground(Color.lightGray);
-		panel3.setBackground(Color.lightGray);
-		panel4.setBackground(Color.lightGray);
-		panel5.setBackground(Color.lightGray);
-		panel6.setBackground(Color.lightGray);
-		nulo.setBackground(Color.lightGray);
+		// panel.setBackground(Color.WHITE);
+		// painel1.setBackground(Color.lightGray);
+		// panel2.setBackground(Color.lightGray);
+		// panel3.setBackground(Color.lightGray);
+		// panel4.setBackground(Color.lightGray);
+		// panel5.setBackground(Color.lightGray);
+		// panel6.setBackground(Color.lightGray);
+		// nulo.setBackground(Color.lightGray);
 
 		panel5.add(jog1);
 		panel5.add(tipojo1);
@@ -298,26 +338,25 @@ public class JogoVelha extends JFrame {
 
 		panel3.add(titulo);
 
-		// painel1
-		// painel1.setLayout(new BoxLayout(painel1, BoxLayout.X_AXIS));
-		painel1.setLayout(new GridLayout(8, 20));
+		painel1.setLayout(new GridLayout(6, 20));
+		painel1.add(painelTest1);
+		painel1.add(painelTest2);
+		painel1.add(painelTest3);
+		painel1.add(painelTest4);
+		painel1.add(painelTest5);
+		painel1.add(painelTest6);
+		painelTest1.add(jogador01);
+		painelTest2.add(campoJogador1);
 
-		painel1.add(jogador01);
-		painel1.add(campoJogador1);
-		// painel1.add(simbolo);
-		painel1.add(jogador02);
-		painel1.add(campoJogador2);
+		painelTest3.add(jogador02);
+		painelTest4.add(campoJogador2);
 
-		// /painel1.add(campo4);
-
+		// opcoes do JComboBox
 		partidas.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
 				"Partidas", "1", "3", "5", "7", "9" }));
 
-		// simbolo.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
-		// "Simbolo", "X", "O" }));
-
-		painel1.add(partidas);
-		painel1.add(adicionar);
+		painelTest6.add(partidas);
+		painelTest6.add(adicionar);
 
 		getContentPane().add(painel1, BorderLayout.WEST);
 		getContentPane().add(panel3, BorderLayout.NORTH);
@@ -325,6 +364,7 @@ public class JogoVelha extends JFrame {
 		getContentPane().add(panel2, BorderLayout.EAST);
 		getContentPane().add(panel4, BorderLayout.SOUTH);
 
+		// saber qual botao o jogador vai clicar
 		MouseAdapter mouse = new MouseAdapter() {
 
 			public void mouseClicked(MouseEvent g) {
@@ -335,7 +375,7 @@ public class JogoVelha extends JFrame {
 						if (jogador1) {
 							if (b1.getText().equals("")) {
 								b1.setText("X");
-								 //b1.setBackground(Color.cyan);
+
 								TurnoJogador();
 
 							}
@@ -343,7 +383,7 @@ public class JogoVelha extends JFrame {
 						} else {
 							if (b1.getText().equals("")) {
 								b1.setText("O");
-								// b1.setBackground(Color.pink);
+
 								TurnoJogador();
 
 							}
@@ -353,13 +393,13 @@ public class JogoVelha extends JFrame {
 						if (jogador1) {
 							if (b2.getText().equals("")) {
 								b2.setText("X");
-								// b2.setBackground(Color.cyan);
+
 								TurnoJogador();
 							}
 						} else {
 							if (b2.getText().equals("")) {
 								b2.setText("O");
-								// b2.setBackground(Color.pink);
+
 								TurnoJogador();
 							}
 						}
@@ -368,13 +408,13 @@ public class JogoVelha extends JFrame {
 						if (jogador1) {
 							if (b3.getText().equals("")) {
 								b3.setText("X");
-								// b3.setBackground(Color.cyan);
+
 								TurnoJogador();
 							}
 						} else {
 							if (b3.getText().equals("")) {
 								b3.setText("O");
-								// b3.setBackground(Color.pink);
+
 								TurnoJogador();
 							}
 						}
@@ -384,13 +424,13 @@ public class JogoVelha extends JFrame {
 						if (jogador1) {
 							if (b4.getText().equals("")) {
 								b4.setText("X");
-								// b4.setBackground(Color.cyan);
+
 								TurnoJogador();
 							}
 						} else {
 							if (b4.getText().equals("")) {
 								b4.setText("O");
-								// b4.setBackground(Color.pink);
+
 								TurnoJogador();
 							}
 						}
@@ -400,13 +440,13 @@ public class JogoVelha extends JFrame {
 						if (jogador1) {
 							if (b5.getText().equals("")) {
 								b5.setText("X");
-								// b5.setBackground(Color.cyan);
+
 								TurnoJogador();
 							}
 						} else {
 							if (b5.getText().equals("")) {
 								b5.setText("O");
-								// b5.setBackground(Color.pink);
+
 								TurnoJogador();
 							}
 						}
@@ -415,13 +455,13 @@ public class JogoVelha extends JFrame {
 						if (jogador1) {
 							if (b6.getText().equals("")) {
 								b6.setText("X");
-								// b6.setBackground(Color.cyan);
+
 								TurnoJogador();
 							}
 						} else {
 							if (b6.getText().equals("")) {
 								b6.setText("O");
-								// b6.setBackground(Color.pink);
+
 								TurnoJogador();
 							}
 						}
@@ -431,13 +471,13 @@ public class JogoVelha extends JFrame {
 						if (jogador1) {
 							if (b7.getText().equals("")) {
 								b7.setText("X");
-								// b7.setBackground(Color.cyan);
+
 								TurnoJogador();
 							}
 						} else {
 							if (b7.getText().equals("")) {
 								b7.setText("O");
-								// b7.setBackground(Color.pink);
+
 								TurnoJogador();
 							}
 						}
@@ -446,13 +486,13 @@ public class JogoVelha extends JFrame {
 						if (jogador1) {
 							if (b8.getText().equals("")) {
 								b8.setText("X");
-								// b8.setBackground(Color.cyan);
+
 								TurnoJogador();
 							}
 						} else {
 							if (b8.getText().equals("")) {
 								b8.setText("O");
-								// b8.setBackground(Color.pink);
+
 								TurnoJogador();
 							}
 						}
@@ -461,13 +501,13 @@ public class JogoVelha extends JFrame {
 						if (jogador1) {
 							if (b9.getText().equals("")) {
 								b9.setText("X");
-								// b9.setBackground(Color.cyan);
+
 								TurnoJogador();
 							}
 						} else {
 							if (b9.getText().equals("")) {
 								b9.setText("O");
-								// b9.setBackground(Color.pink);
+
 								TurnoJogador();
 							}
 						}
@@ -486,7 +526,11 @@ public class JogoVelha extends JFrame {
 
 				}
 				if (g.getSource() == exit)
-					System.exit(0);
+				//	System.exit(0);
+					ca
+					setVisible(false);
+				
+				
 			}
 
 		};
@@ -510,33 +554,33 @@ public class JogoVelha extends JFrame {
 		if (b1.getText().equals(valor) && b2.getText().equals(valor)
 				& b3.getText().equals(valor)) {
 			if (b1.getText().equals("X")) {
-				Vitorias("jog1");
-				LimpaCampos();
+				Vitorias(campoJogador1.getText());
+				TempoParaLimpar();
 			} else {
-				Vitorias("jog2");
-				LimpaCampos();
+				Vitorias(campoJogador2.getText());
+				TempoParaLimpar();
 
 			}
 		}
 		if (b4.getText().equals(valor) && b5.getText().equals(valor)
 				& b6.getText().equals(valor)) {
 			if (b4.getText().equals("X")) {
-				Vitorias("jog1");
-				LimpaCampos();
+				Vitorias(campoJogador1.getText());
+				TempoParaLimpar();
 			} else {
-				Vitorias("jog2");
-				LimpaCampos();
+				Vitorias(campoJogador2.getText());
+				TempoParaLimpar();
 			}
 		}
 
 		if (b7.getText().equals(valor) && b8.getText().equals(valor)
 				& b9.getText().equals(valor)) {
 			if (b7.getText().equals("X")) {
-				Vitorias("jog1");
-				LimpaCampos();
+				Vitorias(campoJogador1.getText());
+				TempoParaLimpar();
 			} else {
-				Vitorias("jog2");
-				LimpaCampos();
+				Vitorias(campoJogador2.getText());
+				TempoParaLimpar();
 
 			}
 		}
@@ -544,11 +588,11 @@ public class JogoVelha extends JFrame {
 		if (b1.getText().equals(valor) && b4.getText().equals(valor)
 				&& b7.getText().equals(valor)) {
 			if (b1.getText().equals("X")) {
-				Vitorias("jog1");
-				LimpaCampos();
+				Vitorias(campoJogador1.getText());
+				TempoParaLimpar();
 			} else {
-				Vitorias("jog2");
-				LimpaCampos();
+				Vitorias(campoJogador2.getText());
+				TempoParaLimpar();
 
 			}
 		}
@@ -556,22 +600,22 @@ public class JogoVelha extends JFrame {
 		if (b2.getText().equals(valor) && b5.getText().equals(valor)
 				&& b8.getText().equals(valor)) {
 			if (b2.getText().equals("X")) {
-				Vitorias("jog1");
-				LimpaCampos();
+				Vitorias(campoJogador1.getText());
+				TempoParaLimpar();
 			} else {
-				Vitorias("jog2");
-				LimpaCampos();
+				Vitorias(campoJogador2.getText());
+				TempoParaLimpar();
 			}
 		}
 
 		if (b3.getText().equals(valor) && b6.getText().equals(valor)
 				&& b9.getText().equals(valor)) {
 			if (b3.getText().equals("X")) {
-				Vitorias("jog1");
-				LimpaCampos();
+				Vitorias(campoJogador1.getText());
+				TempoParaLimpar();
 			} else {
-				Vitorias("jog2");
-				LimpaCampos();
+				Vitorias(campoJogador2.getText());
+				TempoParaLimpar();
 			}
 		}
 		// Testando Diagonais
@@ -579,25 +623,27 @@ public class JogoVelha extends JFrame {
 		if (b1.getText().equals(valor) && b5.getText().equals(valor)
 				&& b9.getText().equals(valor)) {
 			if (b1.getText().equals("X")) {
-				Vitorias("jog1");
-				LimpaCampos();
+				Vitorias(campoJogador1.getText());
+				TempoParaLimpar();
 			} else {
-				Vitorias("jog2");
-				LimpaCampos();
+				Vitorias(campoJogador2.getText());
+				TempoParaLimpar();
 
 			}
 		}
 
 		if (b3.getText().equals(valor) && b5.getText().equals(valor)
 				&& b7.getText().equals(valor)) {
+			
 			if (b3.getText().equals("X")) {
-				Vitorias("jog1");
-				LimpaCampos();
+				Vitorias(campoJogador1.getText());
+				TempoParaLimpar();	
 			} else {
-				Vitorias("jog2");
-				LimpaCampos();
+				Vitorias(campoJogador2.getText());
+				//TempoParaLimpar();
 
 			}
+			
 		}
 
 		// testando empate
@@ -609,35 +655,20 @@ public class JogoVelha extends JFrame {
 				&& !b9.getText().equals("")) {
 
 			Vitorias("empate");
-			LimpaCampos();
+			TempoParaLimpar();
 		}
-
 	}
 
 	public void Vitorias(String vencedor) {
-		if (vencedor.equals("jog1")) {
-			JOptionPane.showMessageDialog(JogoVelha.this, "Vencedor: "
-					+ jogadora);
-			JOptionPane.showMessageDialog(
-					null,
-					getContentPane().add(
-							new JLabel(new ImageIcon(
-									"C:/Users/ALAN PASSOS/Pictures/dia.GIF"))));
+//mudar o nome aki pra q compare com o nome do jogador q foi adicionado
+		if (vencedor.equals(campoJogador1.getText())) {
 			tipojo1.setText(jogadora);
 			vit1++;
 			informacoes1.setText("Vitórias = " + vit1);
 		}
 
-		if (vencedor.equals("jog2")) {
-			JOptionPane.showMessageDialog(JogoVelha.this, "Vencedor: "
-					+ jogadorb);
-			JOptionPane
-					.showMessageDialog(
-							null,
-							getContentPane()
-									.add(new JLabel(
-											new ImageIcon(
-													"C:/Users/ALAN PASSOS/Pictures/meuDeus.GIF"))));
+		if (vencedor.equals(campoJogador2.getText())) {
+
 			tipojo2.setText(jogadorb);
 
 			vit2++;
@@ -645,11 +676,58 @@ public class JogoVelha extends JFrame {
 		}
 
 		if (vencedor.equals("empate")) {
-			JOptionPane.showMessageDialog(JogoVelha.this, "O jogo empatou");
+			JOptionPane.showMessageDialog(Prototipo.this, "O jogo empatou");
 			emp++;
 			empate.setText("Empates = " + emp);
 		}
 
+		if ((vit1 + vit2) == quantidadePartidas ||(vit1 + vit2+emp) == quantidadePartidas) {
+
+			System.out.println("acabou");
+			if (vit1 > vit2) {
+				if (vencedor.equals(campoJogador1.getText())) {
+					JOptionPane.showMessageDialog(Prototipo.this, "Vencedor: "
+							+ jogadora);
+					JOptionPane
+							.showMessageDialog(
+									null,
+									getContentPane()
+											.add(new JLabel(
+													new ImageIcon(
+															"C:/Users/ALAN PASSOS/Pictures/dia.GIF"))));
+					zeraDados();
+					iniciarZerarTudo();
+					adicionar.setEnabled(true);
+					campoJogador1.setEditable(true);
+					campoJogador2.setEditable(true);
+					
+					quantidadePartidas = 0;
+				}
+
+			}
+			if (vit2 > vit1) {
+				if (vencedor.equals(campoJogador2.getText())) {
+
+					JOptionPane.showMessageDialog(Prototipo.this, "Vencedor: "
+							+ jogadorb);
+					JOptionPane
+							.showMessageDialog(
+									null,
+									getContentPane()
+											.add(new JLabel(
+													new ImageIcon(
+															"C:/Users/ALAN PASSOS/Pictures/dia.GIF"))));
+					zeraDados();
+					iniciarZerarTudo();
+					adicionar.setEnabled(true);
+					campoJogador1.setEditable(true);
+					campoJogador2.setEditable(true);
+					quantidadePartidas = 0;
+				}
+
+			}
+
+		}
 	}
 
 	public void LimpaCampos() {
@@ -697,12 +775,12 @@ public class JogoVelha extends JFrame {
 
 	public static void main(String[] args) {
 
-		JogoVelha c = new JogoVelha();
+		Prototipo c = new Prototipo();
 		c.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		c.setSize(660, 300);
-		//não redimensiona a janela
-		c.setResizable( false );
+		// não redimensiona a janela
+		c.setResizable(false);
 		// faz a janela aparecer no centro da tela
 		c.setLocationRelativeTo(null);
 		c.setVisible(true);
