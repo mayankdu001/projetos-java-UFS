@@ -1,0 +1,393 @@
+package Forca;
+
+import java.awt.*;
+
+import javax.swing.*;
+
+import java.awt.event.*;
+import java.util.Random;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import javax.swing.text.*;
+
+public class Forcaa extends JFrame {
+	int x = 0, j = 6, t =0;
+	JFormattedTextField campoLetras;
+	MaskFormatter textFormat;
+
+	Random random = new Random();
+	Font fonte = new Font(null, Font.BOLD + Font.ITALIC, 15);
+	Font letras = new Font("SansSerif", Font.BOLD, 24);
+
+	private static ArrayList<String> palavra = new ArrayList<String>();
+	static {
+		palavra.add(0, "computador");
+		palavra.add(1, "camisa");
+		palavra.add(2, "carro");
+		palavra.add(3, "iniciar");
+		palavra.add(4, "facebook");
+		palavra.add(5, "gasolina");
+		palavra.add(6, "windows");
+		palavra.add(7, "linux");
+
+	}
+
+	private static ArrayList<String> dica = new ArrayList<String>();
+	static {
+		dica.add(0, "Informática");
+		dica.add(1, "Vestuário");
+		dica.add(2, "Automóvel");
+		dica.add(3, "Sinonimo de começar");
+		dica.add(4, "Famosa rede social");
+		dica.add(5, "Combustível");
+		dica.add(6, "Famoso sistema operacional");
+		dica.add(7, "Sistema operacional livre");
+
+	}
+
+	int ind;
+	int tentativa;
+	int acertouTudo = 0;
+	int errouTudo = 0;
+
+	JLabel dicaLabel;
+	JLabel texto[] = new JLabel[15];
+
+	/*
+	 * 
+	 * static ImageIcon[] icon = new ImageIcon[7]; static{ icon[0] = new
+	 * ImageIcon("E:/Projetos_Eclipse/trunk/Eclipse/testWebcam/alan.png");
+	 * icon[1] = new
+	 * ImageIcon("E:/Projetos_Eclipse/trunk/Eclipse/testWebcam/Tadeu.png");
+	 * icon[2] = new
+	 * ImageIcon("E:/Projetos_Eclipse/trunk/Eclipse/JogoDaForca/src/Forca/IMG/2.png"
+	 * ); icon[3] = new
+	 * ImageIcon("E:/Projetos_Eclipse/trunk/Eclipse/JogoDaForca/src/Forca/IMG/3.png"
+	 * ); icon[4] = new
+	 * ImageIcon("E:/Projetos_Eclipse/trunk/Eclipse/JogoDaForca/src/Forca/IMG/4.png"
+	 * ); icon[5] = new
+	 * ImageIcon("E:/Projetos_Eclipse/trunk/Eclipse/JogoDaForca/src/Forca/IMG/5.png"
+	 * ); icon[6] = new
+	 * ImageIcon("E:/Projetos_Eclipse/trunk/Eclipse/JogoDaForca/src/Forca/IMG/6.png"
+	 * ); }
+	 * 
+	 * 
+	 * static{ for(int i = 0; i<7;i++) icone[i] = new JLabel();
+	 * icone[0].setIcon(icon[0]); icone[1].setIcon(icon[1]);
+	 * icone[2].setIcon(icon[2]); icone[3].setIcon(icon[3]);
+	 * icone[4].setIcon(icon[4]); icone[5].setIcon(icon[5]);
+	 * icone[6].setIcon(icon[6]); }
+	 */
+	JTextField campoPalavra;
+	JButton testaL;
+	JButton testaP;
+	JPanel panel;
+	JPanel panel2 = new JPanel();
+	JPanel panel3 = new JPanel();
+	JPanel panel4;
+	JPanel centro, extra;
+	JLabel textoTentativa = new JLabel("Tentativas = " + tentativa);
+	JMenuBar menu = new JMenuBar();
+	JMenu subMenu = new JMenu("Menu");
+	JMenuItem sair = new JMenuItem("Sair");
+	JMenuItem help = new JMenuItem("Help");
+
+	public Forcaa() throws ParseException {
+
+		super("Forca");
+
+		menu.add(subMenu);
+		subMenu.add(help);
+		subMenu.add(sair);
+		add(menu, BorderLayout.NORTH);
+		novaPalavra();
+
+		panel = new JPanel();
+		// panel3 = new JPanel();
+		panel4 = new JPanel();
+		centro = new JPanel();
+
+		testaP = new JButton("Testar palavra");
+		testaL = new JButton("Testar letra");
+
+		campoPalavra = new JTextField(10);
+		textFormat = new MaskFormatter("?");
+		campoLetras = new JFormattedTextField(textFormat);
+		campoLetras.setColumns(1);
+
+		textoTentativa.setFont(fonte);
+
+		panel.add(campoLetras);
+		panel.add(testaL);
+
+		centro.setLayout(new GridLayout(5, 1));
+		centro.add(panel4);
+		centro.add(panel);
+
+		panel3.add(icone);
+
+		panel4.add(campoPalavra);
+		panel4.add(testaP);
+
+		panel.setBackground(Color.blue);
+		panel2.setBackground(Color.blue);
+		panel3.setBackground(Color.blue);
+		panel4.setBackground(Color.blue);
+		centro.setBackground(Color.blue);
+		extra.setBackground(Color.blue);
+
+		getContentPane().add(centro, BorderLayout.WEST);
+		// getContentPane().add(icon);
+		getContentPane().add(panel3, BorderLayout.EAST);
+		getContentPane().add(panel2, BorderLayout.SOUTH);
+
+		MouseAdapter mouse = new MouseAdapter() {
+
+			public void mousePressed(MouseEvent g) {
+
+				if (g.getSource() == testaL)
+					testa();
+				if (g.getSource() == testaP)
+					testaPalavra();
+
+				if (g.getSource() == sair) {
+					JOptionPane.showMessageDialog(null, "Fim de jogo");
+					JOptionPane.showMessageDialog(null, "Você Acertou: "
+							+ acertouTudo + " Palavras" + "\nE errou: "
+							+ errouTudo + " Palavras");
+					System.exit(0);
+				}
+
+				if (g.getSource() == help) {
+					JOptionPane
+							.showMessageDialog(
+									null,
+									"O Jogo da Forca consiste em tentar adivinhar a palavra proposta.\n"
+											+ "A cada letra errada, uma tentativa é diminuída.\n"
+											+ "Caso o jogador erre a palavra, ele é enforcado");
+				}
+
+			}
+		};
+		help.addMouseListener(mouse);
+
+		testaL.addMouseListener(mouse);
+		testaP.addMouseListener(mouse);
+		sair.addMouseListener(mouse);
+		
+		
+		
+		icone.setIcon(new ImageIcon(
+				"E:/Projetos_Eclipse/trunk/Eclipse/testWebcam/boneco" + 0
+						+ ".png"));
+		
+	
+
+	}
+
+	// testa a letra
+	public void testa() {
+
+		int achou = 0;
+
+		String letra;
+		letra = campoLetras.getText().charAt(0) + "";
+		campoLetras.setText(null);
+		letra = letra.toLowerCase();
+
+		StringBuilder palavraComp = new StringBuilder();
+
+		for (int i = 0; i < palavra.get(ind).length(); i++) {
+
+			if (letra.charAt(0) == (palavra.get(ind).charAt(i))) {
+
+				achou = 1;
+				texto[i].setText("" + letra);
+			}
+
+			palavraComp.append(texto[i].getText());
+		}
+
+		if (achou == 0) {
+
+			tentativa--;
+
+		}
+
+		textoTentativa.setText("Tentativas = " + tentativa);
+
+		perdeu();
+
+		ganhou(palavraComp);
+
+	}
+
+	// metodo palavra nova
+	public void novaPalavra() {
+
+		panel2.setVisible(false);
+		panel2.removeAll();
+		panel2.setVisible(true);
+
+		extra = new JPanel();
+		int x = palavra.size();
+
+		fimPalavra(x);
+
+		ind = random.nextInt(x);
+
+		dicaLabel = new JLabel();
+		dicaLabel.setFont(fonte);
+		dicaLabel.setText("Dica: " + dica.get(ind));
+		tentativa = 7;
+
+		textoTentativa.setText("Tentativas = " + tentativa);
+
+		for (int i = 0; i < palavra.get(ind).length(); i++) {
+
+			texto[i] = new JLabel("_");
+			panel2.add(texto[i]);
+		}
+
+		extra.setLayout(new BoxLayout(extra, BoxLayout.Y_AXIS));
+		extra.add(dicaLabel);
+		extra.add(textoTentativa);
+		panel2.add(extra);
+		
+	}
+
+	public void fimPalavra(int x) {
+
+		if (x == 0) {
+
+			JOptionPane.showMessageDialog(null, "Fim de jogo");
+
+			JOptionPane.showMessageDialog(null, "Você Acertou: " + acertouTudo
+					+ " Palavras" + "\nE errou: " + errouTudo + " Palavras");
+			System.exit(0);
+
+		}
+	}
+
+	// testa o fim das tentativas
+	JLabel icone = new JLabel();
+
+	public void perdeu() {
+		
+		if (tentativa == 0) {
+
+			errouTudo++;
+
+			for (int i = 0; i < palavra.get(ind).length(); i++) {
+
+				texto[i].setText("" + palavra.get(ind).charAt(i));
+
+			}
+
+			JOptionPane.showMessageDialog(Forcaa.this, "Enforcado");
+
+			palavra.remove(ind);
+			dica.remove(ind);
+
+			novaPalavra();
+
+		}
+		
+		
+if (tentativa == j) {
+				j--;
+				x++;
+				
+				icone.setIcon(new ImageIcon(
+						"E:/Projetos_Eclipse/trunk/Eclipse/testWebcam/boneco" + x
+								+ ".png"));
+				System.out.println("tentativas: "+ tentativa);
+				System.out.println("j: "+j);
+				System.out.println("x: "+x);
+				System.out.println("setou");
+				panel3.add(icone);	
+				
+	
+}
+
+if(x==7){
+	icone.setIcon(new ImageIcon(
+			"E:/Projetos_Eclipse/trunk/Eclipse/testWebcam/boneco" + 0
+					+ ".png"));
+	
+	x=0;
+	j=7;
+	
+}
+if(tentativa== 1){
+	x=7;
+
+}
+//t=0;			
+			//x++;
+			//j--;
+	
+		/*
+		 * 
+		 * if(tentativa == 4) panel3.add(icone[3]); if(tentativa == 3)
+		 * panel3.add(icone[4]); if(tentativa == 2) panel3.add(icone[5]);
+		 * if(tentativa == 1) panel3.add(icone[6]); if(tentativa == 0)
+		 * panel3.setVisible(false);
+		 */
+	}
+	
+	
+
+	// testa vitoria por letra
+	public void ganhou(StringBuilder a) {
+
+		if (a.toString().equalsIgnoreCase(palavra.get(ind))) {
+
+			acertouTudo++;
+
+			JOptionPane
+					.showMessageDialog(Forcaa.this, "Voce acertou a palavra");
+
+			palavra.remove(ind);
+			dica.remove(ind);
+
+			novaPalavra();
+
+		}
+
+	}
+
+	public void testaPalavra() {
+
+		StringBuilder palavraToda = new StringBuilder();
+
+		palavraToda.append(campoPalavra.getText());
+		campoPalavra.setText(null);
+		if (palavraToda.toString().equalsIgnoreCase(palavra.get(ind))) {
+
+			for (int i = 0; i < palavra.get(ind).length(); i++) {
+
+				texto[i].setText("" + palavra.get(ind).charAt(i));
+
+			}
+			ganhou(palavraToda);
+		} else
+
+			tentativa = 0;
+
+		perdeu();
+
+	}
+
+	public static void main(String[] args) throws ParseException {
+
+		Forcaa f = new Forcaa();
+		f.setSize(600, 450);
+		// f.setResizable(false);
+		f.setLocationRelativeTo(null);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setVisible(true);
+	}
+}
