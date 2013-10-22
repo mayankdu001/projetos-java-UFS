@@ -1,0 +1,51 @@
+package JogoDaVelha;
+
+import java.awt.FlowLayout;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class Cadastro extends JFrame {
+	JButton adicionar, sair;
+	JTextField campoJogador1, campoJogador2;
+	JLabel jogador1, jogador2;
+	JPanel painel1;
+	public void ajustaFundo(String arquivo) { 
+			JLabel fundo = new JLabel(new
+			  ImageIcon(arquivo)); fundo.setLayout(new FlowLayout());
+			  setContentPane(fundo); }
+			 
+	public Cadastro() {
+		 ajustaFundo("C:/Users/ALAN PASSOS/Pictures/hulk.JPG");
+		 
+	adicionar = new JButton("adicionar");
+	sair = new JButton();
+	campoJogador1 = new JTextField();
+	campoJogador2 = new JTextField();
+	jogador1 = new JLabel();
+	jogador2 = new JLabel();
+	painel1 = new JPanel();
+	
+	add(adicionar);
+	
+	
+		 
+		 
+		 
+		 
+		 setVisible(true);
+		 setSize(300,300);
+		 setLocationRelativeTo(null);
+	}
+
+	public static void main(String[] args) {
+		new Cadastro();
+		
+
+	}
+
+}

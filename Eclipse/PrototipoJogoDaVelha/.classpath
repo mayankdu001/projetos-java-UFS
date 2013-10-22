@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/lib/jmf.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ALAN PASSOS/Desktop/sun-jai_codec.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/lib/customizer.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/lib/mediaplayer.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/lib/multiplayer.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/lib/sound.jar"/>
+	<classpathentry kind="lib" path="E:/Projetos_Eclipse/trunk/Eclipse/PrototipoJogoDaVelha/lib/webcam-capture-0.3.10-RC1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -30,8 +30,8 @@ public class ArmazenarString {
 		JOptionPane.showMessageDialog(null, "total de vogal: " + cont
 				+ "\n total de concoantes: " + cont3 + "\ntotal de espacos: "
 				+ cont2);
-		// System.out.println("total de vogal" + cont);
-		// System.out.println("total de concoantes: " + cont2);
-		// System.out.println("total de espacos: " + cont3);
+		 System.out.println("total de vogal: " + cont);
+		System.out.println("total de concoantes: " +cont3);
+		System.out.println("total de espacos: " +  cont2);
 	}
 }

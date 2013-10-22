@@ -1,0 +1,81 @@
+package Forca;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+public class Forca extends JFrame{
+	
+	JPanel geral[] = new JPanel[5];
+	JButton adicionar;
+	JTextField campoLetras;
+	JTextField campoPalavras;
+	JLabel letra;
+	JLabel palavras;
+	
+	
+	public 	Forca(){
+	
+		
+		adicionar = new JButton("adicionar");
+		adicionar.setSize(new Dimension(2,2));
+		campoLetras = new JTextField(2);
+		campoPalavras = new JTextField(10);
+		letra = new JLabel("Letra: ");
+		palavras = new JLabel("Palavra: ");
+		for (int i = 0; i < 5; i++) {
+			geral[i] = new JPanel();
+			
+		}
+		
+		
+		
+		//geral[1].setLayout(new GridBagLayout());
+		add(geral[1]);
+	    geral[1].setLayout(new GridLayout(10,10,20,2));
+		
+		geral[1].add(letra);
+		geral[1].add(campoLetras);
+		geral[1].add(palavras);
+		geral[1].add(campoPalavras);
+		geral[1].add(adicionar);
+		geral[1].add(geral[2]);
+		geral[1].add(geral[2]);
+		
+		add(geral[1], BorderLayout.WEST);
+	
+	//	add(geral[1], BorderLayout.WEST);
+		//add(geral[2], BorderLayout.EAST);
+		//add(geral[3], BorderLayout.SOUTH);
+		//add(geral[4], BorderLayout.NORTH);
+		
+		
+		
+		
+	
+	setSize(300, 300);
+	setVisible(true);
+	}
+	
+	
+	
+	
+	
+	
+
+	public static void main(String[] args) {
+		new Forca();
+		
+		
+
+	}
+
+}

@@ -1,0 +1,135 @@
+package Forca;
+
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+import java.util.Random;
+
+public class Forcaa extends JFrame {
+
+	JTextField campoLetras = new JTextField(1);
+	JTextField campoPalavra = new JTextField(10);
+	int acertos = 0;
+	Random random = new Random();
+	String[] palavra = { "aabccc", "abc", "aaabbb", "aaabbbcc" };
+	int ind;
+	int indice;
+
+	JLabel texto[] = new JLabel[15];
+	JButton b1 = new JButton("testa");
+
+	JPanel panel = new JPanel();
+	JPanel panel2 = new JPanel();
+	int tentativa;
+	JLabel texto2 = new JLabel("tentativas " + tentativa);
+	int achou = 0;
+
+	// metodo palavra nova
+	public void novaPalavra() {
+
+		ind = random.nextInt(palavra.length);
+
+		/*
+		 * boolean indBoolean = false; if (indice <= palavra.length) {
+		 * indBoolean = true; } if(indBoolean == true) ind =
+		 * random.nextInt(palavra.length) ;
+		 */
+		tentativa = 7;
+		texto2.setText("Tentativas " + tentativa);
+
+		for (int i = 0; i < palavra[ind].length(); i++) {
+			texto[i] = new JLabel("_");
+			panel2.add(texto[i]);
+		}
+
+	}
+
+	public Forcaa() {
+		super("Forca");
+		novaPalavra();
+
+		add(campoLetras, BorderLayout.SOUTH);
+		panel.add(b1);
+		panel.add(texto2);
+		// panel.add(b2);
+		panel.add(panel2);
+		getContentPane().add(panel);
+
+		MouseAdapter mouse = new MouseAdapter() {
+
+			public void mousePressed(MouseEvent g) {
+
+				if (g.getSource() == b1)
+					testa(ind);
+
+			}
+		};
+
+		b1.addMouseListener(mouse);
+
+	}
+
+	// testa a letra
+	public void testa(int indi) {
+		char letra[] = new char[15];
+		char letratest;
+		achou = 0;
+		for (int i = 0; i < palavra[indi].length(); i++) {
+			letratest = campoLetras.getText().charAt(0);
+
+			if (campoLetras.getText().charAt(0) == palavra[indi].charAt(i)) {
+				
+				for (int j = 0; j < i+1; j++) {
+					
+				}
+				if (letratest == letra[i]) {
+					System.out.println("erro");
+				} else {
+					achou = 1;
+					texto[i].setText("" + campoLetras.getText().charAt(0));
+					acertos++;
+				}
+				
+			}
+		}
+
+		if (achou == 0)
+
+			tentativa--;
+
+		texto2.setText("tentativa " + tentativa);
+
+		perdeu(tentativa);
+		ganhou(acertos, ind);
+	}
+
+	// testa o fim das tentativas
+	public void perdeu(int tents) {
+
+		if (tents == 0) {
+			JOptionPane.showMessageDialog(Forcaa.this, "Você errou");
+			panel2.removeAll();
+			novaPalavra();
+		}
+	}
+
+	public void ganhou(int acerts, int indi) {
+
+		if (acerts == palavra[indi].length()) {
+
+			JOptionPane
+					.showMessageDialog(Forcaa.this, "Voce acertou a palavra");
+			panel2.removeAll();
+			novaPalavra();
+			acertos = 0;
+		}
+
+	}
+
+	public static void main(String[] args) {
+		Forcaa f = new Forcaa();
+		f.setSize(300, 300);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setVisible(true);
+	}
+}

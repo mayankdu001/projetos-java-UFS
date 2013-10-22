@@ -1,0 +1,24 @@
+package JogoDaVelha;
+
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class Cadastro extends JFrame {
+	JButton adicionar, sair;
+	JTextField campoJogador1, campoJogador2;
+	JLabel jogador1, jogador2;
+	JPanel painel1;
+
+	public Cadastro() {
+
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

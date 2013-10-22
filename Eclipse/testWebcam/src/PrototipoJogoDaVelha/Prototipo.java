@@ -10,9 +10,8 @@ public class Prototipo extends JFrame {
 
 	boolean saiu = false;
 
-	
-	String jogadora ;
-	String jogadorb ;
+	String jogadora;
+	String jogadorb;
 	boolean iniciar = false;
 
 	// JComboBox partidas;
@@ -81,21 +80,7 @@ public class Prototipo extends JFrame {
 	Font fonte2 = new Font(null, Font.CENTER_BASELINE, 20);
 	Font fonte3 = new Font(null, Font.ROMAN_BASELINE, 38);
 
-	public void TempoParaLimpar() {
-
-		// dalay pra dar o tempo de saber onde cada jogador jogou
-
-		System.out.println("ainda naão deu o dalay");
-
-		/*
-		 * try { Thread.sleep(500); } catch (Exception e) {
-		 * System.out.println("passou aki"); // LimpaCampos(); }
-		 * 
-		 * System.out.println("limpou o campo");
-		 */
-		LimpaCampos();
-
-	}
+	
 
 	// Metodo definição turnos
 	public void TurnoJogador() {
@@ -153,6 +138,7 @@ public class Prototipo extends JFrame {
 		b0 = new JButton("");
 
 		exit = new JButton("Sair");
+		exit.setToolTipText("Retorna a Tela de Cadastro");
 
 		// paineis
 		painel1 = new JPanel();
@@ -173,6 +159,7 @@ public class Prototipo extends JFrame {
 		simbolo1 = new JLabel("Simbolo: X");
 		simbolo1.setForeground(Color.white);
 		informacoes1 = new JLabel("Vitórias = " + vit1);
+		informacoes1.setToolTipText("Quantidade de Vitorias");
 		informacoes1.setForeground(Color.white);
 		tipojo2 = new JLabel();
 		tipojo2.setForeground(Color.white);
@@ -181,6 +168,7 @@ public class Prototipo extends JFrame {
 		simbolo2 = new JLabel("Simbolo: O");
 		simbolo2.setForeground(Color.white);
 		informacoes2 = new JLabel("Vitórias = " + vit2);
+		informacoes2.setToolTipText("Quantidade de Vitorias");
 		informacoes2.setForeground(Color.white);
 		empate = new JLabel("Empates = " + emp);
 		empate.setForeground(Color.white);
@@ -437,11 +425,8 @@ public class Prototipo extends JFrame {
 
 				}
 				if (g.getSource() == exit) {
-					saiu = true;
-					setVisible(false);
-					new Cadastro().campoJogador1.setEnabled(true);
-					new Cadastro().campoJogador2.setEnabled(true);
-					System.console();
+
+					dispose();
 				}
 
 			}
@@ -573,10 +558,9 @@ public class Prototipo extends JFrame {
 	}
 
 	public void Vitorias(String vencedor) {
-		
-		
+
 		if (vencedor.equals("jog1")) {
-			 
+
 			JOptionPane.showMessageDialog(Prototipo.this, "Vencedor: "
 					+ jogadora);
 			JOptionPane.showMessageDialog(null, new ImageIcon(
@@ -603,10 +587,10 @@ public class Prototipo extends JFrame {
 
 		if (vencedor.equals("empate")) {
 			JOptionPane.showMessageDialog(Prototipo.this, "O jogo empatou");
-			
+
 			emp++;
 			empate.setText("Empates = " + emp);
-			
+
 		}
 
 	}

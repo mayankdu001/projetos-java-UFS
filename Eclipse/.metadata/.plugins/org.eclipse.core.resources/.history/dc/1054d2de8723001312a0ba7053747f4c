@@ -1,0 +1,23 @@
+package JogoDaVelha;
+
+import javax.swing.JFrame;
+
+public class Cadastro extends JFrame {
+jButton adicionar, sair;
+	
+	public Cadastro (){
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

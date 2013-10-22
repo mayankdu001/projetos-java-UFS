@@ -80,9 +80,16 @@ public class Calculadora extends JFrame {
 
 		soma.addMouseListener(mouseGer);
 		subtrair.addMouseListener(mouseGer);
+		
+		
+		
+		
 		getContentPane().add(painel1);
 
 	}
+	
+	
+	
 
 	public static void main(String[] args) {
 		Calculadora aplicacao = new Calculadora();

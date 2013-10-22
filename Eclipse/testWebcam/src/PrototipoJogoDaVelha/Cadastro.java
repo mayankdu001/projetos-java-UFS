@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
 
@@ -53,49 +54,66 @@ public class Cadastro extends JFrame {
 		Webcam webcam = Webcam.getDefault();
 
 		if (webcam != null) {
+			Tela nova = new Tela();
 
 			Dimension d = new Dimension(320, 240);
 
 			webcam.setViewSize(d);
 			webcam.open();
-			System.out.println("foi " + i++);
 
 			ImageIO.write(webcam.getImage(), "PNG", new File(nome + ".png"));
-
 			webcam.close();
+			JOptionPane.showMessageDialog(null, "Capturamos Sua Foto"
+					+ "\n Para Continuar o Cadastro" + "\nClick OK");
 
 		} else
-			System.out.println("não foi");
+			JOptionPane.showMessageDialog(null, "Camera Não Disponivel");
 
 	}
 
 	public Cadastro() {
 
 		super("MENU CADASTRO");
+		JOptionPane.showMessageDialog(null, "A Aplicaçãoo"
+				+ "\n 'JOGO DA VELHA'" + "\n Necessita de Captura de Imagem"
+				+ "\n Para o Cadastro de Seus Jogadores"
+				+ "\n Caso Deseje Continuar o Cadastro"
+				+ "\n Seus Direitos Altorais Serão Preservados"
+				+ "\n Caso Nao deseje Que Suas Fotos"
+				+ "\n Seja Salva Em Nosso Banco de Dados"
+				+ "\n Por Favor Click Em 'SAIR' "
+				+ "\n No Menu Situado No Canto Superior Esquerdo"
+				+ "\n Ocorrendo o Termino da Seção de Cadastro"
+				+ "\n Sem Que o Usuario jogue" + "\n Para Continuar"
+				+ "\nClik 'OK' ");
 
 		add(menu, BorderLayout.NORTH);
+
 		menu.add(primeiro);
+		menu.setToolTipText("help - creditos- sair");
 		primeiro.add(help);
+		help.setToolTipText("Regas do jogo");
 		primeiro.add(credito);
+		credito.setToolTipText("Dados Sobre a Criação da Aplicação");
 		primeiro.add(sair);
 		adicionar = new JButton("adicionar");
-		adicionar.setToolTipText("clic Para Adicionar O primeiro Jogador");
+		adicionar.setToolTipText("Adiciona O primeiro Jogador");
 		adicionar.setForeground(Color.blue);
 		adicionar2 = new JButton("adicionar");
 		adicionar2.setForeground((Color.blue));
-		adicionar2.setToolTipText("clic Para Adicionar O segundo Jogador");
+		adicionar2.setToolTipText("Adiciona O segundo Jogador");
 		iniciar = new JButton("Iniciar");
 		iniciar.setToolTipText("Clic Para Iniciar a Partida");
 		iniciar.setForeground(Color.BLUE);
 
 		// sair = new JButton("Sair");
 		// sair.setForeground(Color.blue);
-		sair.setToolTipText("clic Para Sair da tela de Cadastro");
+		sair.setToolTipText("Sair da tela de Cadastro");
 
 		campoJogador1 = new JTextField(10);
-		campoJogador1.setToolTipText("Adicione o nome do priemiro Jogador");
+		campoJogador1.setToolTipText("Campo Para Adicionar o Priemiro Jogador");
 		campoJogador2 = new JTextField(10);
-		campoJogador2.setToolTipText("Adicione o nome do segundo Jogador");
+		campoJogador2.setToolTipText("Campo Para Adicionar o Segundo Jogador");
 		jogador1 = new JLabel("Jogador 1");
 		jogador1.setToolTipText("informe o primeiro jogador");
 		jogador1.setForeground(Color.white);
@@ -149,7 +167,7 @@ public class Cadastro extends JFrame {
 		MouseAdapter mouseClic = new MouseAdapter() {
 
 			public void mousePressed(MouseEvent e) {
-				
+
 				int tamanho2 = campoJogador2.getText().length();
 				int tamanho1 = campoJogador1.getText().length();
 
@@ -200,25 +218,20 @@ public class Cadastro extends JFrame {
 						JOptionPane.showMessageDialog(null,
 								"Informe todos os Campos");
 					} else {
+
 						Prototipo c = new Prototipo();
 						// jogoa
 
-						c.jogadora = campoJogador1.getText();
-						c.tipojo1.setText(c.jogadora);
-						System.out.println(campoJogador1.getText() + "  +  "
-								+ c.jogadora);
+						c.jogadora = campo1;
+						c.tipojo1.setText(campo1);
 						// jogobb
 
-						c.jogadorb = campoJogador2.getText();
-						c.tipojo2.setText(c.jogadorb);
-						System.out.println(campoJogador2.getText() + "  +  "
-								+ campo2);
+						c.jogadorb = campo2;
+						c.tipojo2.setText(campo2);
 
 						campoJogador1.setText(null);
 						campoJogador2.setText(null);
 
-						System.out.println(campo1 + "+ " + campoJogador1.getText());
-						System.out.println(campo2 + "+" + campoJogador2.getText());
 						c.iniciar = true;
 						c.setVisible(true);
 						c.setSize(450, 300);
@@ -229,31 +242,47 @@ public class Cadastro extends JFrame {
 
 					// Prototipo c = new Prototipo();
 
-					
 				}
 				if (e.getSource() == credito) {
 					// Creditos novo = new Creditos();
 					// novo.setVisible(true);
 					// novo.setSize(300,300);
 					JOptionPane.showMessageDialog(null,
-							"Sistema Criado e Desenvolvido Por:"
-									+ "\nParte Grafica:\n" +
+							"_________________________________\n"
+									+ "\nCREDITOS"
+									
+									+ "\nUniversidade Federal de Sergipe "
+									
+									+ "\nCampus Dr.Alberto Carvalho"
 
-									"\nBrendel Francisco Lima Santos" +
+									+ "\nCurso de Sistemas de Informação"
 
-									"\nAlan De Jesus Passos" +
+									+ "\nSegundo Periodo"
 
-									"\nJalisson" +
+									+ "\nTrabalho de Programação 2"
 
-									"\nTrabalho de Programação 2" +
+									+ "\nProfessor(a): Mai-ly Vanessa"
 
-									"\nResponsavel Profcional" +
+									+ "\nSistema Desenvolvido Por:"
 
-									"\nMai-ly Vanessa" +
+									+ "\nAlan De Jesus Passos"
 
-									"\nCurso de Sistemas de Informação");
+									+ "\nBrendel Francisco Lima Santos\n"
+									+ "______________________________"
+
+					);
 				}
-
+				if (e.getSource() == help) {
+					JOptionPane
+							.showMessageDialog(
+									null,
+									"REGRAS"
+											+ "\nO Primeiro Jogador Joga com os xis ( X)"
+											+ "\n O Segundo Jogador Joga com o círculo ( O ) "
+											+ "\nCada  jogador, na sua vez, Marca seu Simbolo,"
+											+ "\n numa lacuna que esteja vazia."
+											+ "\nQuando há empate costuma-se dizer que o jogo “deu velha”.");
+				}
 				if (e.getSource() == sair) {
 					System.exit(0);
 				}
@@ -265,6 +294,7 @@ public class Cadastro extends JFrame {
 		iniciar.addMouseListener(mouseClic);
 		adicionar2.addMouseListener(mouseClic);
 		adicionar.addMouseListener(mouseClic);
+		help.addMouseListener(mouseClic);
 		sair.addMouseListener(mouseClic);
 
 	}

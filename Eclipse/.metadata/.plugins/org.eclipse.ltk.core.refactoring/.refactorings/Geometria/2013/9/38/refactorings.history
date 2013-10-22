@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete element from project &apos;Geometria&apos;&#x0D;&#x0A;- Original project: &apos;Geometria&apos;&#x0D;&#x0A;- Original element: &apos;Geometria/src/Execoes&apos;" description="Delete element" element1="/src&lt;Execoes" elements="1" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1379590062541" subPackages="false" version="1.0"/>
+</session>
