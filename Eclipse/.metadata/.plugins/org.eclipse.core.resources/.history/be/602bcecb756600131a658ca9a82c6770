@@ -1,0 +1,22 @@
+public class BuscaBinaria {
+
+	public boolean test(int vetor[]){
+	
+	if(quant<vetor.length){
+		
+	}
+	
+}
+
+	public void ordenar(int vetor[]) {
+		int inicio = 0;
+		int fim = vetor.length;
+		int meio = (inicio + fim) / 2;
+
+	}
+
+	public static void main(String[] args) {
+
+	}
+
+}

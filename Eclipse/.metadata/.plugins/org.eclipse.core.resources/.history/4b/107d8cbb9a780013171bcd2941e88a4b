@@ -1,0 +1,27 @@
+package Remocao;
+
+public class ListaLinearVazia {
+
+	private int vetor[];
+	private int quant;
+	
+	
+	public ListaLinearVazia(int quantidade){
+		this.vetor = new int[quantidade];
+		this.quant = 0;
+	}
+	
+	public boolean inserir(int elem){
+		if(quant< vetor.length){
+			vetor[quant++] = elem;
+					return true;
+		}
+		return false;
+	}
+	public static void main(String[] args) {
+		ListaLinearVazia vetor = new ListaLinearVazia(5);
+		
+
+	}
+
+}

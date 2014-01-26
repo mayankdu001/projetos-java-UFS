@@ -1,0 +1,64 @@
+package Lista;
+
+class Lista {
+
+	Object data;
+	Node nextNode;
+
+	Lista(Object objeto, Node node) {
+		data = objeto;
+		nextNode = node;
+	}
+
+	Lista(Object objeto) {
+		this(objeto, null);
+	}
+
+	public Object getData() {
+		return data;
+	}
+
+	public Node getNextNode() {
+		return nextNode;
+	}
+
+}
+
+public class Lista {
+	private ListNode firstNode;
+	private ListNode lastNode;
+	private String name;
+
+	public Lista() {
+		this("Lista");
+	}
+
+	public Lista(String listName) {
+		name = listName;
+		firstNode = lastNode = null;
+	}
+
+	public boolean isEmpty() {
+		if (firstNode == null)
+			return true;
+		else
+			return false;
+	}
+
+	public void insereNoFim(Object itemInserido) {
+		if (isEmpty()) {
+
+			firstNode = lastNode = new ListNode(itemInserido);
+
+		} else {
+
+			lastNode.nextNode = new ListNode(itemInserido, firstNode);
+
+			lastNode = lastNode.nextNode;
+
+		}
+	}
+	
+	
+
+}

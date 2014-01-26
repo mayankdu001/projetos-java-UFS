@@ -1,0 +1,62 @@
+package Lista;
+
+class Node {
+	Object data;
+	Node nextNode;
+
+	public Node(Object elemento, Node node) {
+		this.data = elemento;
+		this.nextNode = node;
+	}
+	public Node(Object objeto){
+		this(objeto,null);
+	}
+
+	public Object getObject() {
+		return data;
+	}
+
+	public Node getNext() {
+		return nextNode;
+	}
+
+}
+
+public class ListNode {
+	Node firstNode;
+	Node lastNode;
+	String nome;
+
+	public ListNode() {
+		this("nome");
+	}
+
+	public ListNode(String nome) {
+		this.nome = nome;
+		firstNode = lastNode = null;
+
+	}
+
+	public boolean inEpmpty() {
+		if (firstNode == null) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+	
+	public boolean inserirNaFrente(Object nome){
+		if(inEpmpty()){
+			firstNode = lastNode = new Node(nome);
+		}else{
+		firstNode = new Node(nome, firstNode);	
+			
+		}
+		return true;
+		
+		
+	}
+	
+
+}

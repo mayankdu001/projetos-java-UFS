@@ -1,0 +1,12 @@
+package Lista;
+
+import java.awt.List;
+
+public class Node {
+
+	Object data;
+	List nextNode;
+	
+	
+	
+}

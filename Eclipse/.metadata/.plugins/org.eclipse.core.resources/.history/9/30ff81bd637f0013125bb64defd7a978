@@ -1,0 +1,90 @@
+package Lista;
+
+/**
+ * Classes para implementação de uma lista encadeada
+ * A classe ListNode implementa um nó de uma lista genérica, que pode guardar qualquer tipo de objeto
+ * A classe List implementa as operações de uma lista simplesmente encadeada que guarda as informações de cabeça e cauda
+ * 
+ */
+
+// Esta classe representa um nó em uma lista
+class ListNode
+{
+    //membros de acesso do pacote
+    Object data;
+    ListNode nextNode;
+      
+    //construtor de dois argumentos - referencia o objeto e o próximo nó
+    ListNode(Object objeto, ListNode node)
+    {
+        data = objeto;
+        nextNode = node;
+    }
+    //fim do construtor de dois argumento
+    
+    //construtor de um argumento que na verdade vai chamar o de dois
+    ListNode(Object objeto)
+    {
+    this(objeto, null);            
+    }
+    //fim do construtor de um argumento
+    
+    //Retorna uma referência aos dados do nó
+    Object getObject()
+    {
+        return data;    
+    }
+    
+    //Retorna uma referência ao nó seguinte a este
+    ListNode getNext()
+    {
+        return nextNode;    
+    }
+    
+    
+}//Fim da classe ListNode
+
+//Inicio da definição da classe list
+public class Lissta
+{
+    private ListNode firstNode;
+    private ListNode lastNode;
+    private String name;
+
+    //construtor sem argumentos cria a lista com um nome genérico de lista, na verdade ele apenas chama o outro construtor
+    //que aí sim realmente coloca null na cabeça e cauda da lista
+    public Lissta()
+    {
+        this("Lista");    
+    }
+    
+    //construtor de um argumento, dá um nome a lista e coloca cabeça e cauda em null
+    public Lissta(String listName)
+    {
+        name = listName;
+        firstNode = lastNode = null;
+    }
+    
+    //determina se a lista está vazia
+    public boolean isEmpty()
+    {
+        if (firstNode == null) 
+            return true;    
+        else
+            return false;       
+    }
+    
+    //Insere nó na frente da lista. Caso a lista esteja vazia chama o construtor de ListNode de um argumento e 
+    // cabeça e cauda apontarão para ele. Caso já haja elementos chama o construtor de ListNode e constrói um 
+    // nó que aponta para firstNode e coloca ele na cabeça da lista.
+    public void insereNaFrente(Object itemInserido)
+    {
+           if( isEmpty()){                             
+            firstNode = lastNode = new ListNode(itemInserido);
+           
+           }
+           else                
+            lastNode.nextNode = new ListNode(itemInserido,firstNode);
+            lastNode = lastNode.nextNode;
+    }  
+}

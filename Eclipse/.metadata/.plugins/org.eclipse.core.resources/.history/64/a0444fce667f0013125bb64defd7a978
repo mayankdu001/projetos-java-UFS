@@ -1,0 +1,82 @@
+package Lista;
+
+class Node {
+
+	Object data;
+	Node nextNode;
+
+	Node(Object objeto, Node node) {
+		data = objeto;
+		nextNode = node;
+	}
+
+	Node(Object objeto) {
+		this(objeto, null);
+	}
+
+	public Object getData() {
+		return data;
+	}
+
+	public Node getNextNode() {
+		return nextNode;
+	}
+
+}
+
+public class Noode {
+	private ListNode firstNode;
+	private ListNode lastNode;
+	private String name;
+
+	public Noode() {
+		this("Lista");
+	}
+
+	public Noode(String listName) {
+		name = listName;
+		firstNode = lastNode = null;
+	}
+
+	public boolean isEmpty() {
+		if (firstNode == null)
+			return true;
+		else
+			return false;
+	}
+	
+	public void insereNaFrente(Object itemInserido) {
+		if (isEmpty()) {
+
+			firstNode = lastNode = new ListNode(itemInserido);
+
+		} else {
+
+			lastNode.nextNode = new ListNode(itemInserido, firstNode);
+
+			lastNode = lastNode.nextNode;
+
+		}
+	}
+
+
+	public void insereNoFim(Object itemInserido) {
+		if (isEmpty()) {
+
+			firstNode = lastNode = new ListNode(itemInserido);
+
+		} else {
+
+			lastNode.nextNode = new ListNode(itemInserido, firstNode);
+
+			lastNode = lastNode.nextNode;
+
+		}
+	}
+public void mostrar(){
+	
+	
+	
+	
+}
+}

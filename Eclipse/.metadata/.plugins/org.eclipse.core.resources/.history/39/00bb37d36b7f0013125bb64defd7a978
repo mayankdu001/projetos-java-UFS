@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class Principal {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		Scanner ler = new Scanner(System.in);
+		String nome= null;
+		int test=1;
+		List list = new List();
+
+		do {
+		System.out.println("1- Inserir na frente");
+		System.out.println("2- Inserir atraz");
+			
+			
+		} while (test !=0);
+		
+		
+		
+		
+		list.insereNaFrente(ler.next());
+		list.mostrar();
+		list.insereNaFrente(ler.next());
+		list.mostrar();
+		list.insereNaFrente(ler.next());
+		list.mostrar();
+		list.insereNaFrente(ler.next());
+		list.mostrar();
+		
+
+	}
+
+}

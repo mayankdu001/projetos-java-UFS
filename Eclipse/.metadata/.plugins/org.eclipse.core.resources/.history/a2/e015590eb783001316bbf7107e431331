@@ -1,0 +1,109 @@
+
+
+class List {
+
+	Object data;
+	List nextNode;
+
+	List(Object objeto, List node) {
+		data = objeto;
+		nextNode = node;
+	}
+
+	List(Object objeto) {
+		this(objeto, null);
+	}
+
+	public Object getData() {
+		return data;
+	}
+
+	public List getNextNode() {
+		return nextNode;
+	}
+	
+	
+
+}
+
+public class List {
+	private List firstNode;
+	private List lastNode;
+	private String name;
+
+	public List() {
+		this("Lista");
+	}
+
+	public List(String listName) {
+		name = listName;
+		firstNode = lastNode = null;
+	}
+
+	public boolean isEmpty() {
+		if (firstNode == null)
+			return true;
+		else
+			return false;
+	}
+
+	public void insereNaFrente(Object itemInserido) {
+		if (isEmpty()) {
+
+			firstNode = lastNode = new List(itemInserido);
+
+		} else {
+
+			firstNode = new List(itemInserido, firstNode);
+
+		}
+	}
+
+	public void insereNoFim(Object itemInserido) {
+		if (isEmpty()) {
+
+			firstNode = lastNode = new List(itemInserido);
+
+		} else {
+
+			lastNode.nextNode = new List(itemInserido, firstNode);
+
+			lastNode = lastNode.nextNode;
+
+		}
+	}
+
+	public void mostrar() {
+		if (isEmpty()) {
+			System.out.println("Lista Vazia" + name);
+			return;
+		}
+
+		List atual = firstNode;
+
+		while (atual != null) {
+			System.out.println(atual.getData());
+			atual = atual.nextNode;
+		}
+
+	}
+
+	public void removerNaFrente() {
+		if (isEmpty()) {
+			System.out.println("lista vazia");
+		}
+		
+		
+	
+		List inicio = firstNode;
+		
+		while(inicio.nextNode != null){
+			inicio = inicio.nextNode;	
+		}
+		
+		
+		
+
+	}
+
+}

@@ -1,0 +1,32 @@
+package Lista;
+
+import java.awt.List;
+
+public class Node {
+
+	Object data;
+	Node nextNode;
+	
+	Node(Object objeto, Node node ){
+		data = objeto;
+		nextNode = node;
+	}
+	
+	Node(Object objeto){
+		this(objeto, null);
+	}
+
+	public Object getData() {
+		return data;
+	}
+
+	public Node getNextNode() {
+		return nextNode;
+	}
+	
+}
+
+
+public class Lista{
+	
+}

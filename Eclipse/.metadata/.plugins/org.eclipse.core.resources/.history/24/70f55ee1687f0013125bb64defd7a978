@@ -1,0 +1,90 @@
+
+
+class Node {
+
+	Object data;
+	Node nextNode;
+
+	Node(Object objeto, Node node) {
+		data = objeto;
+		nextNode = node;
+	}
+
+	Node(Object objeto) {
+		this(objeto, null);
+	}
+
+	public Object getData() {
+		return data;
+	}
+
+	public Node getNextNode() {
+		return nextNode;
+	}
+
+}
+
+public class List {
+	private ListNode firstNode;
+	private ListNode lastNode;
+	private String name;
+
+	public List() {
+		this("Lista");
+	}
+
+	public List(String listName) {
+		name = listName;
+		firstNode = lastNode = null;
+	}
+
+	public boolean isEmpty() {
+		if (firstNode == null)
+			return true;
+		else
+			return false;
+	}
+
+	public void insereNaFrente(Object itemInserido) {
+		if (isEmpty()) {
+
+			firstNode = lastNode = new ListNode(itemInserido);
+
+		} else {
+
+			firstNode = new ListNode(itemInserido, firstNode);
+
+		}
+	}
+
+	public void insereNoFim(Object itemInserido) {
+		if (isEmpty()) {
+
+			firstNode = lastNode = new ListNode(itemInserido);
+
+		} else {
+
+			lastNode.nextNode = new ListNode(itemInserido, firstNode);
+
+			lastNode = lastNode.nextNode;
+
+		}
+	}
+public void mostrar(){
+	if(isEmpty()){
+		System.out.println("Lista Vazia"+ name);
+		return;
+	}
+	
+	ListNode atual = firstNode;
+	
+	while(atual!= null){
+		System.out.println(atual.getObject());	
+	}
+	
+	
+	
+}
+
+
+}

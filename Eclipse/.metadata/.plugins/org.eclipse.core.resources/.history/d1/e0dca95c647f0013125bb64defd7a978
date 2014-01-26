@@ -1,0 +1,72 @@
+package Lista;
+
+
+
+public class Node {
+
+	Object data;
+	Node nextNode;
+	
+	Node(Object objeto, Node node ){
+		data = objeto;
+		nextNode = node;
+	}
+	
+	Node(Object objeto){
+		this(objeto, null);
+	}
+
+	public Object getData() {
+		return data;
+	}
+
+	public Node getNextNode() {
+		return nextNode;
+	}
+	
+}
+
+public class Lista{
+    private ListNode firstNode;
+    private ListNode lastNode;
+    private String name;
+
+    //construtor sem argumentos cria a lista com um nome genérico de lista, na verdade ele apenas chama o outro construtor
+    //que aí sim realmente coloca null na cabeça e cauda da lista
+    public Lista()
+    {
+        this("Lista");    
+    }
+    
+    
+	//construtor de um argumento, dá um nome a lista e coloca cabeça e cauda em null
+    public Lista(String listName)
+    {
+        name = listName;
+        firstNode = lastNode = null;
+    }
+    
+    //determina se a lista está vazia
+    public boolean isEmpty()
+    {
+        if (firstNode == null) 
+            return true;    
+        else
+            return false;       
+    }
+    
+    //Insere nó na frente da lista. Caso a lista esteja vazia chama o construtor de ListNode de um argumento e 
+    // cabeça e cauda apontarão para ele. Caso já haja elementos chama o construtor de ListNode e constrói um 
+    // nó que aponta para firstNode e coloca ele na cabeça da lista.
+    public void insereNoFim(Object itemInserido)
+    {
+           if( isEmpty()){                             
+            firstNode = lastNode = new ListNode(itemInserido);
+           
+           }
+           else                
+            lastNode.nextNode = new ListNode(itemInserido,firstNode);
+            lastNode = lastNode.nextNode;
+    }  
+}	
+
